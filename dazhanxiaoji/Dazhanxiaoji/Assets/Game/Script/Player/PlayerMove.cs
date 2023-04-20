@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public float speed;
-    private Rigidbody2D _rb;
+    private PlayerMovePosition _movePosition;
     private float _speedX;
     public Transform flipTransfrom;
 
     void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        _movePosition = GetComponent<PlayerMovePosition>();
     }
 
     void Update()
@@ -36,9 +36,9 @@ public class PlayerMove : MonoBehaviour
     void ReadInput()
     {
         _speedX = 0;
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
             _speedX = _speedX - 1;
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
             _speedX = _speedX + 1;
 
         if (_speedX > 0)
@@ -52,8 +52,7 @@ public class PlayerMove : MonoBehaviour
     /// </summary>
     void Move()
     {
-        var destination = transform.position + Vector3.right * _speedX * speed * Time.fixedDeltaTime;
-        _rb.MovePosition(destination);
+        _movePosition.AddMovement(Vector3.right * _speedX * speed);
     }
 
     void FlipRight()

@@ -4,13 +4,19 @@ using System.Collections;
 public class PlayerJump : MonoBehaviour
 {
     public float jumpPower = 10;
-    private Rigidbody2D _rb;
-    private float _speedY;
 
-    private bool _isFloating;
+    private float _speedY;
+    public PlayerGroundDetecter groundDetecter;
+    private PlayerMovePosition _movePosition;
+    private bool _isFloating { get { return !groundDetecter.isGrounded; } }
     private bool _isAttacking;
     private bool _isDead;
     public float gravity = 9;
+
+    private void Start()
+    {
+        _movePosition = GetComponent<PlayerMovePosition>();
+    }
 
     void Update()
     {
@@ -40,9 +46,19 @@ public class PlayerJump : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var destination = transform.position + Vector3.up * _speedY * Time.fixedDeltaTime;
-        _rb.MovePosition(destination);
+        if (_speedY <= 0 && !_isFloating)
+        {
+            _speedY = 0;
+            return;
+        }
 
+        _movePosition.AddMovement(Vector3.up * _speedY);
         _speedY -= gravity * Time.fixedDeltaTime;
+    }
+
+    public void OnGrounded()
+    {
+        _speedY = 0;
+        _movePosition.Stop();
     }
 }
