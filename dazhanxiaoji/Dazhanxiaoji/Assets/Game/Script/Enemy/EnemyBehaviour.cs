@@ -6,6 +6,7 @@ public class EnemyBehaviour : MonoBehaviour
 {
     public Animator animator;
     public ParticleSystem attackPs;
+
     void Start()
     {
 
