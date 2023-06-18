@@ -9,9 +9,17 @@ public class PlayerMove : MonoBehaviour
     private float _speedX;
     public Transform flipTransfrom;
 
+    private Animator _animator;
+    private PlayerJump _jump;
+    private PlayerAttackBehaviour _attack;
+    public bool isMoving { get; private set; }
+
     void Start()
     {
         _movePosition = GetComponent<PlayerMovePosition>();
+        _animator = GetComponentInChildren<Animator>();
+        _jump = GetComponent<PlayerJump>();
+        _attack = GetComponent<PlayerAttackBehaviour>();
     }
 
     void Update()
@@ -35,6 +43,13 @@ public class PlayerMove : MonoBehaviour
     /// </summary>
     void ReadInput()
     {
+        if (_attack.isAttacking)
+        {
+            _speedX = 0;
+            _animator.SetBool("walk", false);
+            return;
+        }
+
         _speedX = 0;
         if (Input.GetKey(KeyCode.A))
             _speedX = _speedX - 1;
@@ -42,9 +57,23 @@ public class PlayerMove : MonoBehaviour
             _speedX = _speedX + 1;
 
         if (_speedX > 0)
+        {
+            isMoving = true;
+            _animator.SetBool("walk", true);
             FlipRight();
+        }
         else if (_speedX < 0)
+        {
+            isMoving = true;
             FlipLeft();
+            _animator.SetBool("walk", true);
+        }
+        else
+        {
+            isMoving = false;
+            if (!_jump.IsJumping)
+                _animator.SetBool("walk", false);
+        }
     }
 
     /// <summary>
@@ -52,7 +81,10 @@ public class PlayerMove : MonoBehaviour
     /// </summary>
     void Move()
     {
-        _movePosition.AddMovement(Vector3.right * _speedX * speed);
+        if (_speedX != 0)
+            _movePosition.AddXMovement(Vector3.right * _speedX * speed);
+        else
+            _movePosition.StopXMovement();
     }
 
     void FlipRight()

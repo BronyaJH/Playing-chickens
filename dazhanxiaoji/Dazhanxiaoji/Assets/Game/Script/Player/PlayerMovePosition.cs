@@ -3,27 +3,29 @@ using System.Collections;
 
 public class PlayerMovePosition : MonoBehaviour
 {
-    private CharacterController _cc;
+    public Rigidbody2D rb { get; private set; }
     private Vector3 _movement;
 
     void Start()
     {
-        _cc = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
-        _cc.Move(_movement * Time.fixedDeltaTime);
-        Stop();
     }
 
-    public void AddMovement(Vector3 mm)
+    public void AddXMovement(Vector3 mm)
     {
-        _movement += mm;
+        var v = rb.velocity;
+        v.x = mm.x;
+        rb.velocity = v;
     }
 
-    public void Stop()
+    public void StopXMovement()
     {
-        _movement = Vector3.zero;
+        var v = rb.velocity;
+        v.x = 0;
+        rb.velocity = v;
     }
 }

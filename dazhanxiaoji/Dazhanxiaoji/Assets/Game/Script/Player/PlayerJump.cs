@@ -11,11 +11,15 @@ public class PlayerJump : MonoBehaviour
     private bool _isFloating { get { return !groundDetecter.isGrounded; } }
     private bool _isAttacking;
     private bool _isDead;
-    public float gravity = 9;
+
+    private Animator _animator;
+    private PlayerAttackBehaviour _attack;
 
     private void Start()
     {
         _movePosition = GetComponent<PlayerMovePosition>();
+        _animator = GetComponentInChildren<Animator>();
+        _attack = GetComponent<PlayerAttackBehaviour>();
     }
 
     void Update()
@@ -23,8 +27,15 @@ public class PlayerJump : MonoBehaviour
         ReadInput();
     }
 
+    public bool IsJumping { get { return _isFloating; } }
+
     void ReadInput()
     {
+        if (_attack.isAttacking)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
             TryJump();
     }
@@ -41,24 +52,31 @@ public class PlayerJump : MonoBehaviour
 
     void DoJump()
     {
-        _speedY = jumpPower;
+        //_speedY = jumpPower;
+        _animator.SetBool("walk", true);
+        _movePosition.rb.AddForce(new Vector2(0, jumpPower));
     }
 
     private void FixedUpdate()
     {
-        if (_speedY <= 0 && !_isFloating)
-        {
-            _speedY = 0;
-            return;
-        }
+        //  if (_speedY <= 0 && !_isFloating)
+        //  {
+        //      _speedY = 0;
+        //      return;
+        //  }
 
-        _movePosition.AddMovement(Vector3.up * _speedY);
-        _speedY -= gravity * Time.fixedDeltaTime;
+        //_movePosition.AddMovement(Vector3.up * _speedY);
+        //_speedY -= gravity * Time.fixedDeltaTime;
     }
 
     public void OnGrounded()
     {
         _speedY = 0;
-        _movePosition.Stop();
+
+        var v = _movePosition.rb.velocity;
+        v.y = 0;
+        _movePosition.rb.velocity = v;
+        _movePosition.StopXMovement();
+        _animator.SetBool("walk", false);
     }
 }
