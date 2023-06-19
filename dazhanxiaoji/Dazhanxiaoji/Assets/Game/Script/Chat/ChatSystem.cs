@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
 
-public class ChatService : MonoBehaviour
+public class ChatSystem : MonoBehaviour
 {
-    public static ChatService instance { get; private set; }
+    public static ChatSystem instance { get; private set; }
 
     private ChatPrototype _chat;
 
@@ -12,16 +12,25 @@ public class ChatService : MonoBehaviour
         instance = this;
     }
 
+
+    public ChatPrototype testStartingChat;
+
+    private void Start()
+    {
+        if (testStartingChat != null)
+            ShowChat(testStartingChat);
+    }
+
     public void ShowChat(ChatPrototype chat)
     {
-        PauseService.instance.Pause();
+        PauseSystem.instance.Pause();
         _chat = chat;
         ChatPanelBehaviour.instance.Show(_chat);
     }
 
     public void EndChat()
     {
-        PauseService.instance.Resume();
+        PauseSystem.instance.Resume();
 
         ChatPanelBehaviour.instance.Hide();
 

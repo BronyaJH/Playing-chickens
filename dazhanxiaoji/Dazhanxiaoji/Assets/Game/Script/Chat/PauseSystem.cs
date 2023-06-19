@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using com;
 
-public class PauseService : MonoBehaviour
+public class PauseSystem : MonoBehaviour
 {
-    public static PauseService instance { get; private set; }
+    public static PauseSystem instance { get; private set; }
 
     private void Awake()
     {

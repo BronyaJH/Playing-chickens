@@ -51,7 +51,7 @@ public class ChatPanelBehaviour : MonoBehaviour
 
         right.enabled = false;
         left.enabled = false;
-        var chatCharacter = ConfigService.instance.chatConfig.GetChatCharacterPrototype(chat.characterId);
+        var chatCharacter = ConfigSystem.instance.chatConfig.GetChatCharacterPrototype(chat.characterId);
         var sp = chatCharacter.sp;
         if (sp != null)
         {
@@ -72,7 +72,7 @@ public class ChatPanelBehaviour : MonoBehaviour
     {
         if (_textAnimation.Finished)
         {
-            ChatService.instance.OnChatEnd();
+            ChatSystem.instance.OnChatEnd();
         }
         else
         {

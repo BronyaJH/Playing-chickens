@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class ConfigService : MonoBehaviour
+public class ConfigSystem : MonoBehaviour
 {
-    public static ConfigService instance { get; private set; }
+    public static ConfigSystem instance { get; private set; }
 
     public ChatConfig chatConfig;
 
