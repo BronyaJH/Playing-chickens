@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: chat1
   m_EditorClassIdentifier: 
   characterId: tree
-  content: hello guy
+  content: hello guy~hello guy~hello guy~hello guy~hello guy~hello guy~hello guy~hello
+    guy~hello guy~
   soundName: 1
   chatSpecialAction: 0
   next: {fileID: 11400000, guid: a1c963bb5e2653e4a8e7bf3c62e700d5, type: 2}

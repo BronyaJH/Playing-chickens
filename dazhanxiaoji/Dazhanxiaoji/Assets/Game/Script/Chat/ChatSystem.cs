@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 
 public class ChatSystem : MonoBehaviour
@@ -17,6 +18,14 @@ public class ChatSystem : MonoBehaviour
 
     private void Start()
     {
+        ChatPanelBehaviour.instance.Hide();
+
+        StartCoroutine(TestChat());
+    }
+
+    IEnumerator TestChat()
+    {
+        yield return new WaitForSeconds(1);
         if (testStartingChat != null)
             ShowChat(testStartingChat);
     }
