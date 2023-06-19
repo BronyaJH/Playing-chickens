@@ -4,6 +4,7 @@
 public class ChatPrototype : ScriptableObject
 {
     public string characterId;
+    [Multiline]
     public string content;
     public string soundName;
 
