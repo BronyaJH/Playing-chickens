@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: tree-2
   m_EditorClassIdentifier: 
   characterId: tree
-  content: '<size=16>I am Groot</size><size=200%>I am Groot</size>
+  content: '<size=24>I am Groot</size><size=200%>I am Groot</size>
 
     <color=#FF00FF>I
     am Groot</color><color=#0FF>I am Groot</color>
 
-    <spirte index=1><size=200%><spirte
+    <sprite index=1><size=200%><sprite
     index=2></size>'
   soundName: 0
   chatSpecialAction: 0

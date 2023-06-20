@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: minion-1
   m_EditorClassIdentifier: 
   characterId: minion
-  content: 'You die now!
+  content: 'You!
 
-    You die now!
+    You die!
 
     You die now!
 

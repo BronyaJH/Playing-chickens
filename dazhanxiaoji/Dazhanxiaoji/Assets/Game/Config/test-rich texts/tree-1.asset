@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: tree-1
   m_EditorClassIdentifier: 
   characterId: tree
-  content: I am Groot <b>I am Groot</b><i>I am Groot</i><u>I am Groot</u>
+  content: I am Groot <b>I am Groot </b> <i>I am Groot</i> <u>I am Groot</u>
   soundName: 0
   chatSpecialAction: 0
   next: {fileID: 11400000, guid: 5dff46288ad066f4897c63290e22b026, type: 2}

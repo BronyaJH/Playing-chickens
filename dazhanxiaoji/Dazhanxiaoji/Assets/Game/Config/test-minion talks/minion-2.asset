@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: minion-2
   m_EditorClassIdentifier: 
   characterId: minion
-  content: hello guy~hello guy~hello guy~hello guy~hello guy~hello guy~hello guy~hello
-    guy~hello guy~
+  content: 'hello guy~hello guy~hello guy~hello guy~hello guy~hello guy~
+
+    hello
+    guy~hello guy~hello guy~hello guy~hello guy~hello guy~hello guy~hello guy~hello
+    guy~hello guy~hello guy~hello guy~
+
+    hello guy~hello guy~hello guy~hello guy~hello
+    guy~hello guy~'
   soundName: 0
   chatSpecialAction: 0
   next: {fileID: 0}
