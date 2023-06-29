@@ -4,12 +4,11 @@ using UnityEngine;
 public class PlayerAnimationEventReceiver : MonoBehaviour
 {
     public ParticleSystem attackPs;
-    private PlayerMove playerMove;
-    private PlayerAttackBehaviour playerAttack;
+    public PlayerMove playerMove;
+    public PlayerAttackBehaviour playerAttack;
     private void Awake()
     {
-        playerMove = GetComponent<PlayerMove>();
-        playerAttack = GetComponent<PlayerAttackBehaviour>();
+
     }
 
     public void OnAttacked()
