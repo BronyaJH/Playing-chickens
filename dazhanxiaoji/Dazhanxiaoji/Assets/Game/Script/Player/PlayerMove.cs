@@ -59,14 +59,16 @@ public class PlayerMove : MonoBehaviour
         if (_speedX > 0)
         {
             isMoving = true;
-            _animator.SetBool("walk", true);
+            if (!_jump.IsJumping)
+                _animator.SetBool("walk", true);
             FlipRight();
         }
         else if (_speedX < 0)
         {
             isMoving = true;
             FlipLeft();
-            _animator.SetBool("walk", true);
+            if (!_jump.IsJumping)
+                _animator.SetBool("walk", true);
         }
         else
         {

@@ -13,7 +13,7 @@ public class PlayerAnimationEventReceiver : MonoBehaviour
 
     public void OnAttacked()
     {
-        Debug.Log("OnAttacked");
+        //Debug.Log("PlayerAnimationEventReceiver OnAttacked");
         attackPs.Play();
         playerAttack.OnAttacked();
     }

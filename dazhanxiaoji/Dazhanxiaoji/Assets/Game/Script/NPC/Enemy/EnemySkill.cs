@@ -1,0 +1,15 @@
+﻿using System.Collections;
+using UnityEngine;
+
+[System.Serializable]
+public class EnemySkill
+{
+    public string id;
+    public int damage;
+    [Multiline]
+    public string desc;
+
+    public GameObject prefab;
+
+    public float duration;
+}

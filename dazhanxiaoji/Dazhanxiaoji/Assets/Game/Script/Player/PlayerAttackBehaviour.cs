@@ -11,6 +11,10 @@ public class PlayerAttackBehaviour : MonoBehaviour
     private Animator _animator;
     private PlayerJump _jump;
 
+    public Transform damageOrigin;
+    public float damageRadius = 1.5f;
+    public int damage = 10;
+
     private void Awake()
     {
         nextCanAttackTimestamp = 0;
@@ -44,6 +48,14 @@ public class PlayerAttackBehaviour : MonoBehaviour
 
     public void OnAttacked()
     {
+        Debug.Log("OnAttacked");
         //test enemy distance
+        var targets = Physics2D.OverlapCircleAll(damageOrigin.position, damageRadius);
+        foreach (var t in targets)
+        {
+            var ene = t.GetComponent<EnemyBehaviour>();
+            if (ene != null)
+                ene.TakeDamage(damage);
+        }
     }
 }

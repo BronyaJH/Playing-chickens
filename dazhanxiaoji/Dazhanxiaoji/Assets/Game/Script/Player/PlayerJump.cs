@@ -77,6 +77,7 @@ public class PlayerJump : MonoBehaviour
         v.y = 0;
         _movePosition.rb.velocity = v;
         _movePosition.StopXMovement();
+
         _animator.SetBool("walk", false);
     }
 }
