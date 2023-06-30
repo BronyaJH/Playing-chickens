@@ -14,16 +14,24 @@ public class PlayerAttackBehaviour : MonoBehaviour
     public Transform damageOrigin;
     public float damageRadius = 1.5f;
     public int damage = 10;
-
+    private PlayerHealthBehaviour _health;
     private void Awake()
     {
         nextCanAttackTimestamp = 0;
         _animator = GetComponentInChildren<Animator>();
         _jump = GetComponent<PlayerJump>();
+        _health = GetComponent<PlayerHealthBehaviour>();
     }
 
     private void Update()
     {
+        CheckAttack();
+    }
+
+    void CheckAttack()
+    {
+        if (_health.isDead)
+            return;
         if (Input.GetKeyDown(KeyCode.J))
         {
             TryAttack();

@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     private Animator _animator;
     private PlayerJump _jump;
     private PlayerAttackBehaviour _attack;
+    private PlayerHealthBehaviour _health;
     public bool isMoving { get; private set; }
 
     void Start()
@@ -20,6 +21,7 @@ public class PlayerMove : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
         _jump = GetComponent<PlayerJump>();
         _attack = GetComponent<PlayerAttackBehaviour>();
+        _health = GetComponent<PlayerHealthBehaviour>();
     }
 
     void Update()
@@ -43,6 +45,9 @@ public class PlayerMove : MonoBehaviour
     /// </summary>
     void ReadInput()
     {
+        if (_health.isDead)
+            return;
+
         if (_attack.isAttacking)
         {
             _speedX = 0;

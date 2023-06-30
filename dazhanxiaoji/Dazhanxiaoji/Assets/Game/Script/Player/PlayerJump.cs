@@ -14,12 +14,13 @@ public class PlayerJump : MonoBehaviour
 
     private Animator _animator;
     private PlayerAttackBehaviour _attack;
-
+    private PlayerHealthBehaviour _health;
     private void Start()
     {
         _movePosition = GetComponent<PlayerMovePosition>();
         _animator = GetComponentInChildren<Animator>();
         _attack = GetComponent<PlayerAttackBehaviour>();
+        _health = GetComponent<PlayerHealthBehaviour>();
     }
 
     void Update()
@@ -32,10 +33,9 @@ public class PlayerJump : MonoBehaviour
     void ReadInput()
     {
         if (_attack.isAttacking)
-        {
             return;
-        }
-
+        if (_health.isDead)
+            return;
         if (Input.GetKeyDown(KeyCode.Space))
             TryJump();
     }
