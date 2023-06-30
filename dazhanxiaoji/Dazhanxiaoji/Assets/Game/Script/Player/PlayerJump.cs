@@ -53,7 +53,7 @@ public class PlayerJump : MonoBehaviour
     void DoJump()
     {
         //_speedY = jumpPower;
-        _animator.SetBool("walk", true);
+        _animator.SetBool("walk", false);
         _movePosition.rb.AddForce(new Vector2(0, jumpPower));
     }
 

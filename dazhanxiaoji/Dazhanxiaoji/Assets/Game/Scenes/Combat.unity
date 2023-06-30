@@ -1801,6 +1801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d967cd8a9027a94eabd4ee298cb3313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpbar: {fileID: 0}
   hpMax: 5
   dieSound: 
   deathFadeDelay: 1.2
@@ -3622,7 +3623,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d967cd8a9027a94eabd4ee298cb3313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpMax: 22
+  hpbar: {fileID: 688916369}
+  hpMax: 40
   dieSound: 
   deathFadeDelay: 5
 --- !u!1 &587061772
@@ -4040,7 +4042,8 @@ GameObject:
   m_Component:
   - component: {fileID: 688916366}
   - component: {fileID: 688916368}
-  - component: {fileID: 688916367}
+  - component: {fileID: 688916370}
+  - component: {fileID: 688916369}
   m_Layer: 5
   m_Name: BossHpBar
   m_TagString: Untagged
@@ -4070,36 +4073,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &688916367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 688916365}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &688916368
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4108,6 +4081,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688916365}
   m_CullTransparentMesh: 1
+--- !u!114 &688916369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688916365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dbb50581d3db3b46b3a485ec960ed3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.75
+  bar: {fileID: 1439446169}
+  bar_shadow: {fileID: 1970389832}
+  cg: {fileID: 722403634}
+  hideIfFull: 0
+  powerScaleValue: 1.25
+  length: 1200
+--- !u!225 &688916370
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688916365}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &691249929
 GameObject:
   m_ObjectHideFlags: 0
@@ -4265,7 +4269,8 @@ GameObject:
   m_Component:
   - component: {fileID: 722403631}
   - component: {fileID: 722403633}
-  - component: {fileID: 722403632}
+  - component: {fileID: 722403635}
+  - component: {fileID: 722403634}
   m_Layer: 5
   m_Name: PlayerHpBar
   m_TagString: Untagged
@@ -4295,36 +4300,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 820, y: 519}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &722403632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 722403630}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &722403633
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4333,6 +4308,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722403630}
   m_CullTransparentMesh: 1
+--- !u!225 &722403634
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722403630}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!114 &722403635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722403630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dbb50581d3db3b46b3a485ec960ed3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.6
+  bar: {fileID: 10861905}
+  bar_shadow: {fileID: 0}
+  cg: {fileID: 722403634}
+  hideIfFull: 0
+  powerScaleValue: 1.1
+  length: 300
 --- !u!1 &728021508
 GameObject:
   m_ObjectHideFlags: 0
@@ -9698,6 +9704,7 @@ GameObject:
   - component: {fileID: 787363954}
   - component: {fileID: 787363953}
   - component: {fileID: 787363958}
+  - component: {fileID: 787363959}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -9815,6 +9822,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.15}
   m_Size: {x: 0.5, y: 2.4}
   m_Direction: 0
+--- !u!114 &787363959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787363951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8127eb5e020143343a05ffa954aa5f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpbar: {fileID: 722403635}
+  hpMax: 200
+  dieSound: 
+  deathFadeDelay: 1
 --- !u!1 &813552283
 GameObject:
   m_ObjectHideFlags: 0
@@ -17663,7 +17686,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 24}
+  m_SizeDelta: {x: 1200, y: 24}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1439446170
 MonoBehaviour:
@@ -35712,8 +35735,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 137.6, y: 0}
-  m_SizeDelta: {x: 300, y: 24}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1200, y: 24}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1970389833
 MonoBehaviour:

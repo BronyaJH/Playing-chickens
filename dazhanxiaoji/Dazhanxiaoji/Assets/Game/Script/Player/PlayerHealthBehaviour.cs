@@ -54,9 +54,8 @@ public class PlayerHealthBehaviour : MonoBehaviour
         SpriteRenderer[] srs = GetComponentsInChildren<SpriteRenderer>();
         foreach (var sr in srs)
         {
-            sr.DOFade(0, 2).SetDelay(deathFadeDelay + Random.Range(1, 3f));
+            sr.DOFade(0, 3).SetDelay(deathFadeDelay + Random.Range(1, 3f));
         }
-        Destroy(gameObject, deathFadeDelay + 5);
     }
 
     void DoRoutineMove()
