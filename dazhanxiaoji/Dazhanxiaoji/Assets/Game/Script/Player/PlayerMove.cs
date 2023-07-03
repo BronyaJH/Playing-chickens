@@ -50,7 +50,10 @@ public class PlayerMove : MonoBehaviour
 
         if (_attack.isAttacking)
         {
-            _speedX = 0;
+            if (!_jump.IsJumping)
+            {
+                _speedX = 0;
+            }
             _animator.SetBool("walk", false);
             return;
         }

@@ -66,6 +66,44 @@ public class EnemyPatrolBehaviour : MonoBehaviour
 
     }
 
+    bool IsAlerted { get { return false; } }
+
+    bool CheckBeyondPoint(bool useSafePoint)
+    {
+        switch (state)
+        {
+            case PatrolState.GoRight:
+                if (IsAlerted)
+                {
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+
+            case PatrolState.GoLeft:
+                if (IsAlerted)
+                {
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+
+            case PatrolState.StopFacingLeft:
+                Debug.LogWarning("should not execute here");
+                break;
+
+            case PatrolState.StopFacingRight:
+                Debug.LogWarning("should not execute here");
+                break;
+        }
+
+        return false;
+    }
+
     bool IsFacingRight
     {
         get

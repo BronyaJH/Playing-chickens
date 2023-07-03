@@ -1466,6 +1466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   flipTransfrom: {fileID: 813552284}
+  myCollider: {fileID: 0}
 --- !u!70 &241966698
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1768,6 +1769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   flipTransfrom: {fileID: 1610033117}
+  myCollider: {fileID: 0}
 --- !u!70 &306137719
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1820,7 +1822,7 @@ MonoBehaviour:
   hpbar: {fileID: 0}
   hpMax: 5
   dieSound: 
-  deathFadeDelay: 1.2
+  deathFadeDelay: 0.75
   headKickSlay: {fileID: 1100678536}
   npcController: {fileID: 0}
   patrolBehaviour: {fileID: 0}
@@ -3634,6 +3636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   flipTransfrom: {fileID: 1473390173}
+  myCollider: {fileID: 0}
 --- !u!70 &578967642
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -10794,6 +10797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   flipTransfrom: {fileID: 617282682}
+  myCollider: {fileID: 0}
 --- !u!70 &947482269
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

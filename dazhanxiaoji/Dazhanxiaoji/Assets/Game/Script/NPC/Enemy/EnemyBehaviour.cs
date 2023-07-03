@@ -1,5 +1,6 @@
 ﻿using com;
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
@@ -66,21 +67,32 @@ public class EnemyBehaviour : MonoBehaviour
         _dead = true;
         if (hpbar != null)
             hpbar.Hide();
+
         SoundSystem.instance.Play(dieSound);
         npcController.SetAnimTrigger("die");
+        //npcController.myCollider.enabled = false;
 
+        //CapsuleCollider2D col = npcController.myCollider as CapsuleCollider2D;
+        //col.size = new Vector2(col.size.x * 0.25f, col.size.y * 0.25f);
+        StartCoroutine(DieProcess());
+    }
+
+    IEnumerator DieProcess()
+    {
+        yield return new WaitForSeconds(deathFadeDelay);
+        npcController.myCollider.enabled = false;
         SpriteRenderer[] srs = GetComponentsInChildren<SpriteRenderer>();
         foreach (var sr in srs)
-            sr.DOFade(0, 2).SetDelay(deathFadeDelay + Random.Range(1, 3f));
+            sr.DOFade(0, 2).SetDelay(Random.Range(1, 3f));
 
-        Destroy(gameObject, deathFadeDelay + 5);
+        yield return new WaitForSeconds(5);
+        Destroy(gameObject);
     }
 
     void DoRoutineMove()
     {
         if (_dead) return;
-
-
+        //??
     }
 
     public bool IsDead { get { return _dead; } }

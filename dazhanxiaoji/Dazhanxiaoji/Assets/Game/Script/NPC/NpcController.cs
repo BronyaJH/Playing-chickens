@@ -7,12 +7,14 @@ public class NpcController : MonoBehaviour
     private NpcMovePosition _movePosition;
     private float _speedX;
     public Transform flipTransfrom;
-
+    [HideInInspector]
+    public Collider2D myCollider;
     private Animator _animator;
     public bool isMoving { get; private set; }
     void Start()
     {
         _movePosition = GetComponent<NpcMovePosition>();
+        myCollider = GetComponent<Collider2D>();
         _animator = GetComponentInChildren<Animator>();
     }
 
@@ -40,7 +42,7 @@ public class NpcController : MonoBehaviour
             {
                 FlipRight();
                 _speedX = 1;
-                SetAnimBool("walk",true);
+                SetAnimBool("walk", true);
             }
             else
             {
