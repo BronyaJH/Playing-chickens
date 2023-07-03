@@ -43,7 +43,7 @@ public class HpbarFixedWidthBehaviour : MonoBehaviour
             {
                 bar_shadow.DOKill();
                 bar_shadow.sizeDelta = bar.sizeDelta;
-                bar_shadow.DOSizeDelta(barSize, duration).SetEase(Ease.OutCubic);
+                bar_shadow.DOSizeDelta(barSize, duration).SetEase(Ease.InCubic);
             }
             else
                 bar_shadow.sizeDelta = barSize;

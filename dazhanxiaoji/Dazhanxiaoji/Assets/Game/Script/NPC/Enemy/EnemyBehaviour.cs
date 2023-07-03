@@ -12,7 +12,7 @@ public class EnemyBehaviour : MonoBehaviour
     NpcController _npcController;
     public string dieSound;
     public float deathFadeDelay;
-
+    public HeadKickSlay headKickSlay;
     private void Start()
     {
         _npcController = GetComponent<NpcController>();
@@ -24,6 +24,11 @@ public class EnemyBehaviour : MonoBehaviour
     private void Update()
     {
         DoRoutineMove();
+    }
+
+    public void TakeFatalDamage()
+    {
+        TakeDamage(hpMax+1);
     }
 
     public void TakeDamage(int dmg)
