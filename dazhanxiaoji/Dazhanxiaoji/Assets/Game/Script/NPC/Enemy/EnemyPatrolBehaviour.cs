@@ -29,6 +29,22 @@ public class EnemyPatrolBehaviour : MonoBehaviour
 
     EnemyBehaviour enemyBehaviour;
 
+    public Transform patrolPoint_Left;
+    public Transform patrolPoint_Right;
+    public Transform safePoint_Left;
+    public Transform safePoint_Right;
+    public float stopDuration = 0.5f;
+    public float playerCheckDistanceX;
+    public float playerCheckDistanceY;
+    public enum PatrolState
+    {
+        GoRight,
+        GoLeft,
+        StopFacingLeft,
+        StopFacingRight,
+    }
+    public PatrolState state = PatrolState.GoRight;
+
     private void Awake()
     {
         enemyBehaviour = GetComponent<EnemyBehaviour>();
@@ -41,5 +57,21 @@ public class EnemyPatrolBehaviour : MonoBehaviour
             return;
         if (enemyBehaviour.skillBehaviour.IsCasting)
             return;
+
+        GoPatrol();
+    }
+
+    void GoPatrol()
+    {
+
+    }
+
+    bool IsFacingRight
+    {
+        get
+        {
+            var flipTrans = enemyBehaviour.npcController.flipTransfrom;
+            return flipTrans.localScale.x > 0;
+        }
     }
 }

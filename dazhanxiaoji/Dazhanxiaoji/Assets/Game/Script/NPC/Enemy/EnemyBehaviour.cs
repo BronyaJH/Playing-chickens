@@ -1,6 +1,5 @@
 ﻿using com;
 using DG.Tweening;
-using System.Collections;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
@@ -9,11 +8,13 @@ public class EnemyBehaviour : MonoBehaviour
     public int hpMax;
     private int _hp;
     bool _dead;
-    NpcController _npcController;
+
     public string dieSound;
     public float deathFadeDelay;
     public HeadKickSlay headKickSlay;
 
+    [HideInInspector]
+    public NpcController npcController;
     [HideInInspector]
     public EnemyPatrolBehaviour patrolBehaviour;
     [HideInInspector]
@@ -22,7 +23,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        _npcController = GetComponent<NpcController>();
+        npcController = GetComponent<NpcController>();
         patrolBehaviour = GetComponent<EnemyPatrolBehaviour>();
         skillBehaviour = GetComponent<EnemySkillBehaviour>();
     }
@@ -66,7 +67,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (hpbar != null)
             hpbar.Hide();
         SoundSystem.instance.Play(dieSound);
-        _npcController.SetAnimTrigger("die");
+        npcController.SetAnimTrigger("die");
 
         SpriteRenderer[] srs = GetComponentsInChildren<SpriteRenderer>();
         foreach (var sr in srs)
