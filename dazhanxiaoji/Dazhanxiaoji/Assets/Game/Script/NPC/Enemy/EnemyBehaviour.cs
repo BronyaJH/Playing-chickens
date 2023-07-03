@@ -13,9 +13,22 @@ public class EnemyBehaviour : MonoBehaviour
     public string dieSound;
     public float deathFadeDelay;
     public HeadKickSlay headKickSlay;
-    private void Start()
+
+    [HideInInspector]
+    public EnemyPatrolBehaviour patrolBehaviour;
+    [HideInInspector]
+    public EnemySkillBehaviour skillBehaviour;
+
+
+    private void Awake()
     {
         _npcController = GetComponent<NpcController>();
+        patrolBehaviour = GetComponent<EnemyPatrolBehaviour>();
+        skillBehaviour = GetComponent<EnemySkillBehaviour>();
+    }
+
+    private void Start()
+    {
         _hp = hpMax;
         if (hpbar != null)
             hpbar.Set(1, true);
@@ -28,7 +41,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void TakeFatalDamage()
     {
-        TakeDamage(hpMax+1);
+        TakeDamage(hpMax + 1);
     }
 
     public void TakeDamage(int dmg)
@@ -68,4 +81,6 @@ public class EnemyBehaviour : MonoBehaviour
 
 
     }
+
+    public bool IsDead { get { return _dead; } }
 }

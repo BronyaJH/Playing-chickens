@@ -1704,6 +1704,8 @@ GameObject:
   - component: {fileID: 306137720}
   - component: {fileID: 306137719}
   - component: {fileID: 306137721}
+  - component: {fileID: 306137723}
+  - component: {fileID: 306137722}
   m_Layer: 0
   m_Name: Enemy-Minion
   m_TagString: Untagged
@@ -1807,6 +1809,38 @@ MonoBehaviour:
   dieSound: 
   deathFadeDelay: 1.2
   headKickSlay: {fileID: 1100678536}
+  patrolBehaviour: {fileID: 0}
+  skillBehaviour: {fileID: 0}
+--- !u!114 &306137722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306137715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48037187afb6a7b459e763d92cd3581e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &306137723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306137715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bad57ec83acd42d409fd3e53086deac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skills:
+  - id: 
+    damage: 0
+    desc: 
+    prefab: {fileID: 0}
+    duration: 0
 --- !u!1 &314364053
 GameObject:
   m_ObjectHideFlags: 0
@@ -3527,6 +3561,8 @@ GameObject:
   - component: {fileID: 578967643}
   - component: {fileID: 578967642}
   - component: {fileID: 578967644}
+  - component: {fileID: 578967646}
+  - component: {fileID: 578967645}
   m_Layer: 0
   m_Name: Enemy-Boss
   m_TagString: Untagged
@@ -3630,6 +3666,38 @@ MonoBehaviour:
   dieSound: 
   deathFadeDelay: 5
   headKickSlay: {fileID: 0}
+  patrolBehaviour: {fileID: 0}
+  skillBehaviour: {fileID: 0}
+--- !u!114 &578967645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578967638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48037187afb6a7b459e763d92cd3581e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &578967646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578967638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bad57ec83acd42d409fd3e53086deac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skills:
+  - id: 
+    damage: 0
+    desc: 
+    prefab: {fileID: 0}
+    duration: 0
 --- !u!1 &587061772
 GameObject:
   m_ObjectHideFlags: 0
