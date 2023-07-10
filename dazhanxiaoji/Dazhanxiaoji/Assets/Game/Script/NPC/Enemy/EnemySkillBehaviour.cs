@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class EnemySkillBehaviour : MonoBehaviour
 {
-
     public EnemySkill[] skills;
 
     EnemyBehaviour enemyBehaviour;
