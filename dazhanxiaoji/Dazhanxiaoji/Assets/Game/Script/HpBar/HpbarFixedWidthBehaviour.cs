@@ -12,7 +12,7 @@ public class HpbarFixedWidthBehaviour : MonoBehaviour
     public bool hideIfFull;
     public float powerScaleValue = 1;
     public float length;
-
+    public float delay;
     public void Hide()
     {
         cg.alpha = 0;
@@ -43,7 +43,7 @@ public class HpbarFixedWidthBehaviour : MonoBehaviour
             {
                 bar_shadow.DOKill();
                 bar_shadow.sizeDelta = bar.sizeDelta;
-                bar_shadow.DOSizeDelta(barSize, duration).SetEase(Ease.InCubic);
+                bar_shadow.DOSizeDelta(barSize, duration).SetEase(Ease.OutCubic).SetDelay(delay);
             }
             else
                 bar_shadow.sizeDelta = barSize;

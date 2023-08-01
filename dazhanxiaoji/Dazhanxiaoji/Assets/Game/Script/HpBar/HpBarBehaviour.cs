@@ -12,7 +12,7 @@ public class HpBarBehaviour : MonoBehaviour
     public CanvasGroup cg;
     public bool hideIfFull;
     public float powerScaleValue = 1;
-
+    public float delay;
     public void Hide()
     {
         cg.alpha = 0;
@@ -41,7 +41,7 @@ public class HpBarBehaviour : MonoBehaviour
             {
                 bar_shadow.DOKill();
                 bar_shadow.fillAmount = bar.fillAmount;
-                bar_shadow.DOFillAmount(endValue, duration).SetEase(Ease.OutCubic);
+                bar_shadow.DOFillAmount(endValue, duration).SetEase(Ease.OutCubic).SetDelay(delay);
             }
             else
                 bar_shadow.fillAmount = endValue;
