@@ -1418,7 +1418,7 @@ GameObject:
   - component: {fileID: 241966699}
   - component: {fileID: 241966698}
   m_Layer: 0
-  m_Name: Player-Girl
+  m_Name: Girl-fight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
