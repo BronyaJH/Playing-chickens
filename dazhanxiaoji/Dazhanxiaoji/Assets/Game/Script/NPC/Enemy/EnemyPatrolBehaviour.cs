@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class EnemyPatrolBehaviour : MonoBehaviour
 {
@@ -27,15 +28,17 @@ public class EnemyPatrolBehaviour : MonoBehaviour
     //case 4: 玩家跳到敌人后面
     //敌人如果已经超过了patrol point，会停下，否则继续巡逻到下一个patrol point
 
-    EnemyBehaviour enemyBehaviour;
-
+    EnemyBehaviour _enemy;
+    Rigidbody2D _rb2D;
     public Transform patrolPoint_Left;
     public Transform patrolPoint_Right;
     public Transform safePoint_Left;
     public Transform safePoint_Right;
     public float stopDuration = 0.5f;
-    public float playerCheckDistanceX;
-    public float playerCheckDistanceY;
+    float _stopTimer;
+    public float speed;
+
+
     public enum PatrolState
     {
         GoRight,
@@ -47,68 +50,147 @@ public class EnemyPatrolBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        enemyBehaviour = GetComponent<EnemyBehaviour>();
+        _rb2D = GetComponent<Rigidbody2D>();
+        _enemy = GetComponent<EnemyBehaviour>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemyBehaviour.IsDead)
+        if (_enemy.IsDead)
             return;
-        if (enemyBehaviour.skillBehaviour.IsCasting)
+        if (_enemy.skillBehaviour.IsCasting)
             return;
 
-        GoPatrol();
+        CheckState();
     }
 
-    void GoPatrol()
+    private void FixedUpdate()
     {
+        if (_enemy.IsDead)
+            return;
+        if (_enemy.skillBehaviour.IsCasting)
+            return;
 
-    }
-
-    bool IsAlerted { get { return false; } }
-
-    bool CheckBeyondPoint(bool useSafePoint)
-    {
         switch (state)
         {
             case PatrolState.GoRight:
-                if (IsAlerted)
-                {
-                    return true;
-                }
-                else
-                {
-                    return true;
-                }
+                _rb2D.MovePosition((Vector2)transform.position + Vector2.right * speed * Time.fixedDeltaTime);
+                break;
 
             case PatrolState.GoLeft:
-                if (IsAlerted)
-                {
-                    return true;
-                }
-                else
-                {
-                    return true;
-                }
-
-            case PatrolState.StopFacingLeft:
-                Debug.LogWarning("should not execute here");
-                break;
-
-            case PatrolState.StopFacingRight:
-                Debug.LogWarning("should not execute here");
+                _rb2D.MovePosition((Vector2)transform.position + Vector2.left * speed * Time.fixedDeltaTime);
                 break;
         }
-
-        return false;
     }
 
-    bool IsFacingRight
+    void CheckState()
+    {
+        var alerted = _enemy.playerChecker.PlayerInSight();
+        var x = transform.position.x;
+        var pp_l = patrolPoint_Left.position.x;
+        var pp_r = patrolPoint_Right.position.x;
+        var sp_l = safePoint_Left.position.x;
+        var sp_r = safePoint_Right.position.x;
+        //Debug.Log("x " + x);
+        //Debug.Log("pp_l " + pp_l);
+        //Debug.Log("pp_r " + pp_r);
+        //Debug.Log("sp_l " + sp_l);
+        //Debug.Log("sp_r " + sp_r);
+        if (x > sp_r)
+        {
+            SetState(PatrolState.GoLeft);
+            return;
+        }
+        if (x < sp_l)
+        {
+            SetState(PatrolState.GoRight);
+            return;
+        }
+
+        if (!alerted)
+        {
+            if (state == PatrolState.GoLeft || state == PatrolState.GoRight)
+            {
+                if (state == PatrolState.GoRight && x > pp_r)
+                {
+                    SetState(PatrolState.StopFacingRight);
+                    return;
+                }
+                if (state == PatrolState.GoLeft && x < pp_l)
+                {
+                    SetState(PatrolState.StopFacingLeft);
+                    return;
+                }
+            }
+            else
+            {
+                _stopTimer -= Time.deltaTime;
+                if (_stopTimer < 0)
+                {
+                    if (state == PatrolState.StopFacingLeft)
+                    {
+                        SetState(PatrolState.GoRight);
+                        return;
+                    }
+                    if (state == PatrolState.StopFacingRight)
+                    {
+                        SetState(PatrolState.GoLeft);
+                        return;
+                    }
+                }
+            }
+            return;
+        }
+
+        //alerted
+        if (state == PatrolState.StopFacingLeft)
+        {
+            SetState(PatrolState.GoLeft);
+            return;
+        }
+        if (state == PatrolState.StopFacingRight)
+        {
+            SetState(PatrolState.GoRight);
+            return;
+        }
+    }
+
+    void SetState(PatrolState newState)
+    {
+        Debug.Log("newState " + newState);
+        var flipTrans = _enemy.npcController.flipTransfrom;
+        state = newState;
+        switch (state)
+        {
+            case PatrolState.GoRight:
+                _enemy.animator.SetBool("walk", true);
+                flipTrans.localScale = new Vector3(1, 1, 1);
+                _stopTimer = 0;
+                break;
+            case PatrolState.GoLeft:
+                _enemy.animator.SetBool("walk", true);
+                flipTrans.localScale = new Vector3(-1, 1, 1);
+                _stopTimer = 0;
+                break;
+            case PatrolState.StopFacingLeft:
+                _enemy.animator.SetBool("walk", false);
+                flipTrans.localScale = new Vector3(-1, 1, 1);
+                _stopTimer = stopDuration;
+                break;
+            case PatrolState.StopFacingRight:
+                _enemy.animator.SetBool("walk", false);
+                flipTrans.localScale = new Vector3(1, 1, 1);
+                _stopTimer = stopDuration;
+                break;
+        }
+    }
+
+    public bool facingRight
     {
         get
         {
-            var flipTrans = enemyBehaviour.npcController.flipTransfrom;
+            var flipTrans = _enemy.npcController.flipTransfrom;
             return flipTrans.localScale.x > 0;
         }
     }

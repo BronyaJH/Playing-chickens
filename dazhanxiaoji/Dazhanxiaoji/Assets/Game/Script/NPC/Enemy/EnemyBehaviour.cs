@@ -20,13 +20,18 @@ public class EnemyBehaviour : MonoBehaviour
     public EnemyPatrolBehaviour patrolBehaviour;
     [HideInInspector]
     public EnemySkillBehaviour skillBehaviour;
-
+    [HideInInspector]
+    public EnemyPlayerChecker playerChecker;
+    [HideInInspector]
+    public Animator animator;
 
     private void Awake()
     {
         npcController = GetComponent<NpcController>();
         patrolBehaviour = GetComponent<EnemyPatrolBehaviour>();
         skillBehaviour = GetComponent<EnemySkillBehaviour>();
+        playerChecker = GetComponent<EnemyPlayerChecker>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
