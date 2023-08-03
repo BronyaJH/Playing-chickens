@@ -75,10 +75,12 @@ public class EnemyPatrolBehaviour : MonoBehaviour
         switch (state)
         {
             case PatrolState.GoRight:
+                _enemy.animator.SetBool("walk", true);
                 _rb2D.MovePosition((Vector2)transform.position + Vector2.right * speed * Time.fixedDeltaTime);
                 break;
 
             case PatrolState.GoLeft:
+                _enemy.animator.SetBool("walk", true);
                 _rb2D.MovePosition((Vector2)transform.position + Vector2.left * speed * Time.fixedDeltaTime);
                 break;
         }

@@ -17,4 +17,7 @@ public class EnemySkill
     public float maxDist;
 
     public float cdTimer;
+
+
+    public ParticleSystem launchEffect;
 }
