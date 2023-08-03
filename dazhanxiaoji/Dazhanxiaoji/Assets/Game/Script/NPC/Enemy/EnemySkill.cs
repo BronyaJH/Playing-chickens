@@ -10,6 +10,6 @@ public class EnemySkill
     public string desc;
 
     public GameObject prefab;
-
     public float duration;
+    public float cd;
 }
