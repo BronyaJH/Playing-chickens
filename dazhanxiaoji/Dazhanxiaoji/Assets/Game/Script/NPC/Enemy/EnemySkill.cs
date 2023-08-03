@@ -12,4 +12,9 @@ public class EnemySkill
     public GameObject prefab;
     public float duration;
     public float cd;
+
+    public float minDist;
+    public float maxDist;
+
+    public float cdTimer;
 }

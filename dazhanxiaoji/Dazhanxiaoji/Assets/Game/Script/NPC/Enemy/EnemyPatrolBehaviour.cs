@@ -59,7 +59,7 @@ public class EnemyPatrolBehaviour : MonoBehaviour
     {
         if (_enemy.IsDead)
             return;
-        if (_enemy.skillBehaviour.IsCasting)
+        if (_enemy.skillBehaviour.isCasting)
             return;
 
         CheckState();
@@ -69,7 +69,7 @@ public class EnemyPatrolBehaviour : MonoBehaviour
     {
         if (_enemy.IsDead)
             return;
-        if (_enemy.skillBehaviour.IsCasting)
+        if (_enemy.skillBehaviour.isCasting)
             return;
 
         switch (state)
