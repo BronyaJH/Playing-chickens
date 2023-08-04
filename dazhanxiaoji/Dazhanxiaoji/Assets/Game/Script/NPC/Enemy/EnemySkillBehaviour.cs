@@ -12,7 +12,7 @@ public class EnemySkillBehaviour : MonoBehaviour
 
     float _durationTimer;
     //float _sklDamageTimer;
-
+    public Transform meleeCenter;
     private void Awake()
     {
         _enemy = GetComponent<EnemyBehaviour>();
@@ -85,10 +85,10 @@ public class EnemySkillBehaviour : MonoBehaviour
                     () => { spikeImg.DOColor(new Color(0, 0, 0, 0), 0.4f).SetDelay(0.3f); });
 
                 spike.transform.position = spikePos + new Vector3(0, -2.8f, 0);
-                spike.transform.DOMoveY(spikePos.y + 0.7f, 0.75f).SetEase(Ease.OutBounce).SetDelay(0.45f);
-                Destroy(spike.gameObject, 2.5f);
+                spike.transform.DOMoveY(spikePos.y + 0.7f, 0.8f).SetEase(Ease.OutBounce).SetDelay(0.45f);
 
-                DelayDamage(1.1f);
+                StartCoroutine(DelayDamage(0.98f, spike.transform));
+                Destroy(spike.gameObject, 2.5f);
                 skl.launchEffect.transform.position = spikePos;
                 break;
 
@@ -96,6 +96,7 @@ public class EnemySkillBehaviour : MonoBehaviour
                 _enemy.animator.SetTrigger("melee");
                 skl.launchEffect.transform.localScale =
                     new Vector3(_enemy.patrolBehaviour.facingRight ? 1 : -1, 1, 1);
+                StartCoroutine(DelayDamage(0.95f, meleeCenter));
                 break;
         }
 
@@ -113,32 +114,70 @@ public class EnemySkillBehaviour : MonoBehaviour
                 var explosion = ball.transform.GetChild(0);
                 explosion.SetParent(null);
                 explosion.gameObject.SetActive(true);
+                DealDamage(ball.transform);
                 Destroy(ball.gameObject);
                 Destroy(explosion.gameObject, 2);
-                //deal damage
             }
             );
     }
 
-    IEnumerator DelayDamage(float delay)
+    IEnumerator DelayDamage(float delay, Transform trans)
     {
-        yield return delay;
+        yield return new WaitForSeconds(delay);
+        DealDamage(trans);
+    }
+
+    void DealDamage(Transform trans)
+    {
         if (crtSkill != null)
         {
-            var dmg = crtSkill.damage;
+            var pos = trans.position;
+            var player = PlayerBehaviour.instance;
+            bool inRange = false;
+            var dist = player.transform.position - pos;
+            dist.z = 0;
+            dist.y *= 0.6f;
+
             switch (crtSkill.id)
             {
                 case "sky fire":
-
+                    dist.y *= 0.6f;
+                    inRange = dist.magnitude < 1.4f;
                     break;
 
                 case "spike":
-
+                    dist.y *= 0.8f;
+                    dist.x *= 0.9f;
+                    inRange = dist.magnitude < 1.2f;
                     break;
 
                 case "melee":
-
+                    dist.y *= 0.6f;
+                    inRange = dist.magnitude < 1.35f;
                     break;
+            }
+
+            Debug.Log(dist.magnitude);
+            if (inRange)
+            {
+                var dmg = crtSkill.damage;
+                switch (crtSkill.id)
+                {
+                    case "sky fire":
+                        player.health.TakeDamage(15);
+                        //1.4f
+                        break;
+
+                    case "spike":
+                        player.health.TakeDamage(19);
+                        //1.35
+                        break;
+
+                    case "melee":
+                        player.health.TakeDamage(33);
+                        //
+                        break;
+                }
             }
         }
     }
