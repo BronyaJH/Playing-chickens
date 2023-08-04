@@ -156,7 +156,7 @@ public class EnemyPatrolBehaviour : MonoBehaviour
             SetState(PatrolState.GoRight);
             return;
         }
-        if (_enemy.playerChecker.FoundPlayer() && !_enemy.playerChecker.PlayerInSight())
+        if (_enemy.playerChecker.FoundPlayer() && !_enemy.playerChecker.PlayerInRawSight())
         {
             if (facingRight)
                 SetState(PatrolState.GoLeft);

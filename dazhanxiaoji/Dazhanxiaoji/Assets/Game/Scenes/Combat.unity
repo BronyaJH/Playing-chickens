@@ -9041,8 +9041,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c284094fd1158469baee3cfb3b59fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCheckDistanceX: 9
-  playerCheckDistanceY: 3
+  playerCheckDistanceX: 8.5
+  playerCheckDistanceY: 3.5
   permanentAlert: 1
 --- !u!1 &587061772
 GameObject:

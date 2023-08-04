@@ -41,4 +41,17 @@ public class EnemyPlayerChecker : MonoBehaviour
             _permanentAlertRes = true;
         return res;
     }
+
+    public bool PlayerInRawSight()
+    {
+        var pos = PlayerBehaviour.instance.transform.position;
+        var dx = pos.x - transform.position.x;
+        var res = true;
+        if (_enemy.patrolBehaviour.facingRight)
+            res = dx > 0 ;
+        else
+            res = dx < 0;
+
+        return res;
+    }
 }
