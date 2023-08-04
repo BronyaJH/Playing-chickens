@@ -1,18 +1,18 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySkillBehaviour : MonoBehaviour
 {
     public EnemySkill[] skills;
-
     EnemySkill crtSkill;
 
     EnemyBehaviour _enemy;
 
     float _durationTimer;
-    //float _sklDamageTimer;
     public Transform meleeCenter;
+
     private void Awake()
     {
         _enemy = GetComponent<EnemyBehaviour>();
@@ -20,10 +20,7 @@ public class EnemySkillBehaviour : MonoBehaviour
 
     public bool isCasting
     {
-        get
-        {
-            return crtSkill != null;
-        }
+        get { return crtSkill != null; }
     }
 
     void Update()
