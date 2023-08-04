@@ -33,7 +33,7 @@ public class EnemySkillBehaviour : MonoBehaviour
 
         TickSkills();
 
-        if (!_enemy.playerChecker.PlayerInSight())
+        if (!_enemy.playerChecker.FoundPlayer())
             return;
 
         foreach (var skl in skills)
@@ -59,6 +59,18 @@ public class EnemySkillBehaviour : MonoBehaviour
         {
             case "sky fire":
                 _enemy.animator.SetTrigger("sky fire");
+
+                var fireballPos = transform.position;
+                var playerPos = PlayerBehaviour.instance.transform.position;
+                fireballPos.x = (fireballPos.x + playerPos.x) * 0.5f;
+                fireballPos.y = 10;
+
+                SummonFireBall(fireballPos, 3, skl.prefab, playerPos);
+                SummonFireBall(fireballPos, 2, skl.prefab, playerPos);
+                SummonFireBall(fireballPos, 1, skl.prefab, playerPos);
+                SummonFireBall(fireballPos, 0, skl.prefab, playerPos);
+                SummonFireBall(fireballPos, -1, skl.prefab, playerPos);
+                SummonFireBall(fireballPos, -2, skl.prefab, playerPos);
                 break;
 
             case "spike":
@@ -75,12 +87,15 @@ public class EnemySkillBehaviour : MonoBehaviour
                 spike.transform.position = spikePos + new Vector3(0, -2.8f, 0);
                 spike.transform.DOMoveY(spikePos.y + 0.7f, 0.75f).SetEase(Ease.OutBounce).SetDelay(0.45f);
                 Destroy(spike.gameObject, 2.5f);
-                //deal damage
+
+                DelayDamage(1.1f);
                 skl.launchEffect.transform.position = spikePos;
                 break;
 
             case "melee":
                 _enemy.animator.SetTrigger("melee");
+                skl.launchEffect.transform.localScale =
+                    new Vector3(_enemy.patrolBehaviour.facingRight ? 1 : -1, 1, 1);
                 break;
         }
 
@@ -88,6 +103,45 @@ public class EnemySkillBehaviour : MonoBehaviour
             skl.launchEffect.Play();
     }
 
+    void SummonFireBall(Vector3 fireballPos, float xOffset, GameObject prefab, Vector3 playerPos)
+    {
+        var ball = Instantiate(prefab, fireballPos + new Vector3(xOffset, 0, 0), Quaternion.identity);
+        ball.transform.DOMove(playerPos + new Vector3(Random.Range(-0.8f, 0.8f), -1.0f, 0), Random.Range(1.8f, 2.0f)).
+            SetEase(Ease.InCubic).SetDelay(Random.Range(0.1f, 0.4f)).OnComplete(
+            () =>
+            {
+                var explosion = ball.transform.GetChild(0);
+                explosion.SetParent(null);
+                explosion.gameObject.SetActive(true);
+                Destroy(ball.gameObject);
+                Destroy(explosion.gameObject, 2);
+                //deal damage
+            }
+            );
+    }
+
+    IEnumerator DelayDamage(float delay)
+    {
+        yield return delay;
+        if (crtSkill != null)
+        {
+            var dmg = crtSkill.damage;
+            switch (crtSkill.id)
+            {
+                case "sky fire":
+
+                    break;
+
+                case "spike":
+
+                    break;
+
+                case "melee":
+
+                    break;
+            }
+        }
+    }
 
     void TickSkills()
     {

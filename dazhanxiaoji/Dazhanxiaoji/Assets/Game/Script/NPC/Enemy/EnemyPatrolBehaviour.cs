@@ -88,7 +88,7 @@ public class EnemyPatrolBehaviour : MonoBehaviour
 
     void CheckState()
     {
-        var alerted = _enemy.playerChecker.PlayerInSight();
+        var alerted = _enemy.playerChecker.FoundPlayer();
         var x = transform.position.x;
         var pp_l = patrolPoint_Left.position.x;
         var pp_r = patrolPoint_Right.position.x;
@@ -155,6 +155,13 @@ public class EnemyPatrolBehaviour : MonoBehaviour
         {
             SetState(PatrolState.GoRight);
             return;
+        }
+        if (_enemy.playerChecker.FoundPlayer() && !_enemy.playerChecker.PlayerInSight())
+        {
+            if (facingRight)
+                SetState(PatrolState.GoLeft);
+            else
+                SetState(PatrolState.GoRight);
         }
     }
 
