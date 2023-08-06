@@ -167,7 +167,7 @@ public class EnemyPatrolBehaviour : MonoBehaviour
 
     void SetState(PatrolState newState)
     {
-        Debug.Log("newState " + newState);
+        //Debug.Log("newState " + newState);
         var flipTrans = _enemy.npcController.flipTransfrom;
         state = newState;
         switch (state)

@@ -154,7 +154,7 @@ public class EnemySkillBehaviour : MonoBehaviour
                     break;
             }
 
-            Debug.Log(dist.magnitude);
+            //Debug.Log(dist.magnitude);
             if (inRange)
             {
                 var dmg = crtSkill.damage;
