@@ -15,6 +15,9 @@ public class PlayerAttackBehaviour : MonoBehaviour
     public float damageRadius = 1.5f;
     public int damage = 10;
     private PlayerHealthBehaviour _health;
+    public ParticleSystem ps;
+
+
     private void Awake()
     {
         nextCanAttackTimestamp = 0;
@@ -33,9 +36,7 @@ public class PlayerAttackBehaviour : MonoBehaviour
         if (_health.isDead)
             return;
         if (Input.GetKeyDown(KeyCode.J))
-        {
             TryAttack();
-        }
     }
 
     public bool isAttacking { get { return Time.time < nextCanAttackTimestamp; } }
@@ -63,7 +64,10 @@ public class PlayerAttackBehaviour : MonoBehaviour
         {
             var ene = t.GetComponent<EnemyBehaviour>();
             if (ene != null)
+            {
+                ps.Play();
                 ene.TakeDamage(damage);
+            }
         }
     }
 }
