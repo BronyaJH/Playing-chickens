@@ -57,7 +57,7 @@ public class PlayerAttackBehaviour : MonoBehaviour
 
     public void OnAttacked()
     {
-        Debug.Log("OnAttacked");
+        //Debug.Log("OnAttacked");
         //test enemy distance
         var targets = Physics2D.OverlapCircleAll(damageOrigin.position, damageRadius);
         foreach (var t in targets)

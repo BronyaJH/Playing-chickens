@@ -68,6 +68,7 @@ public class EnemySkillBehaviour : MonoBehaviour
                 SummonFireBall(fireballPos, 0, skl.prefab, playerPos);
                 SummonFireBall(fireballPos, -1, skl.prefab, playerPos);
                 SummonFireBall(fireballPos, -2, skl.prefab, playerPos);
+                SummonFireBall(fireballPos, -3, skl.prefab, playerPos);
                 break;
 
             case "spike":
@@ -77,8 +78,8 @@ public class EnemySkillBehaviour : MonoBehaviour
                 var spike = Instantiate(skl.prefab, spikePos, Quaternion.identity);
                 var spikeImg = spike.GetComponentInChildren<SpriteRenderer>();
 
-                spikeImg.color = new Color(0.4f, 0.27f, 0.7f, 0);
-                spikeImg.DOColor(new Color(0.4f, 0.27f, 0.7f, 1), 0.5f).OnComplete(
+                spikeImg.color = new Color(0.4f, 0.2f, 0.7f, 0);
+                spikeImg.DOColor(new Color(0.6f, 0.0f, 0.0f, 1), 0.5f).OnComplete(
                     () => { spikeImg.DOColor(new Color(0, 0, 0, 0), 0.4f).SetDelay(0.3f); });
 
                 spike.transform.position = spikePos + new Vector3(0, -2.8f, 0);
@@ -100,7 +101,7 @@ public class EnemySkillBehaviour : MonoBehaviour
                 _enemy.animator.SetTrigger("melee");
                 skl.launchEffect.transform.localScale =
                     new Vector3(_enemy.patrolBehaviour.facingRight ? 1 : -1, 1, 1);
-                StartCoroutine(DelayDamage(0.85f, meleeCenter));
+                StartCoroutine(DelayDamage(0.825f, meleeCenter));
                 break;
         }
 
@@ -111,7 +112,7 @@ public class EnemySkillBehaviour : MonoBehaviour
     void SummonFireBall(Vector3 fireballPos, float xOffset, GameObject prefab, Vector3 playerPos)
     {
         var ball = Instantiate(prefab, fireballPos + new Vector3(xOffset, 0, 0), Quaternion.identity);
-        ball.transform.DOMove(playerPos + new Vector3(Random.Range(-0.8f, 0.8f), -1.0f, 0), Random.Range(1.8f, 2.0f)).
+        ball.transform.DOMove(playerPos + new Vector3(Random.Range(-0.8f, 0.8f), -1.0f, 0), Random.Range(1.9f, 2.2f)).
             SetEase(Ease.InCubic).SetDelay(Random.Range(0.1f, 0.4f)).OnComplete(
             () =>
             {
@@ -146,13 +147,18 @@ public class EnemySkillBehaviour : MonoBehaviour
             {
                 case "sky fire":
                     dist.y *= 0.6f;
-                    inRange = dist.magnitude < 1.4f;
+                    inRange = dist.magnitude < 1.42f;
                     break;
 
                 case "spike":
                     dist.y *= 0.8f;
                     dist.x *= 0.9f;
                     inRange = dist.magnitude < 1.2f;
+                    break;
+
+                case "melee minion":
+                    dist.y *= 0.6f;
+                    inRange = dist.magnitude < 1.3f;
                     break;
 
                 case "melee":
@@ -168,17 +174,22 @@ public class EnemySkillBehaviour : MonoBehaviour
                 switch (crtSkill.id)
                 {
                     case "sky fire":
-                        player.health.TakeDamage(15);
+                        player.health.TakeDamage(dmg);
                         //1.4f
                         break;
 
                     case "spike":
-                        player.health.TakeDamage(19);
+                        player.health.TakeDamage(dmg);
                         //1.35
                         break;
 
                     case "melee":
-                        player.health.TakeDamage(33);
+                        player.health.TakeDamage(dmg);
+                        //
+                        break;
+
+                    case "melee minion":
+                        player.health.TakeDamage(dmg);
                         //
                         break;
                 }
