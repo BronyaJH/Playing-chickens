@@ -17,7 +17,7 @@ public class HeadKickSlay : MonoBehaviour
         var point = collision.contacts[0].point;
         Vector2 headPosVec2 = headTrans.position;
         var dist = Vector2.Distance(point, headPosVec2);
-        Debug.Log("dist " + dist);
+        //Debug.Log("dist " + dist);
         if (dist < headCircleSize)
         {
             return true;

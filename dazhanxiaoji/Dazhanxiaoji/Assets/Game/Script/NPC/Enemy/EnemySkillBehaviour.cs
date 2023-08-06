@@ -95,6 +95,13 @@ public class EnemySkillBehaviour : MonoBehaviour
                     new Vector3(_enemy.patrolBehaviour.facingRight ? 1 : -1, 1, 1);
                 StartCoroutine(DelayDamage(0.95f, meleeCenter));
                 break;
+
+            case "melee minion":
+                _enemy.animator.SetTrigger("melee");
+                skl.launchEffect.transform.localScale =
+                    new Vector3(_enemy.patrolBehaviour.facingRight ? 1 : -1, 1, 1);
+                StartCoroutine(DelayDamage(0.85f, meleeCenter));
+                break;
         }
 
         if (skl.launchEffect != null)

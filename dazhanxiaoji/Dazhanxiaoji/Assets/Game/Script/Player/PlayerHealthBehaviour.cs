@@ -32,8 +32,7 @@ public class PlayerHealthBehaviour : MonoBehaviour
     {
         if (_dead) return;
 
-        Debug.Log(this.name + "TakeDamage " + dmg);
-
+        //Debug.Log(this.name + "TakeDamage " + dmg);
         _hp -= dmg;
         if (_hp < 0)
             _hp = 0;
