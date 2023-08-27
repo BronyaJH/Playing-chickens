@@ -59,7 +59,7 @@ public class EnemyPatrolBehaviour : MonoBehaviour
     {
         if (_enemy.IsDead)
             return;
-        if (_enemy.skillBehaviour.IsCasting)
+        if (_enemy.skillBehaviour.isCasting)
             return;
 
         CheckState();
@@ -69,16 +69,18 @@ public class EnemyPatrolBehaviour : MonoBehaviour
     {
         if (_enemy.IsDead)
             return;
-        if (_enemy.skillBehaviour.IsCasting)
+        if (_enemy.skillBehaviour.isCasting)
             return;
 
         switch (state)
         {
             case PatrolState.GoRight:
+                _enemy.animator.SetBool("walk", true);
                 _rb2D.MovePosition((Vector2)transform.position + Vector2.right * speed * Time.fixedDeltaTime);
                 break;
 
             case PatrolState.GoLeft:
+                _enemy.animator.SetBool("walk", true);
                 _rb2D.MovePosition((Vector2)transform.position + Vector2.left * speed * Time.fixedDeltaTime);
                 break;
         }
@@ -86,7 +88,7 @@ public class EnemyPatrolBehaviour : MonoBehaviour
 
     void CheckState()
     {
-        var alerted = _enemy.playerChecker.PlayerInSight();
+        var alerted = _enemy.playerChecker.FoundPlayer();
         var x = transform.position.x;
         var pp_l = patrolPoint_Left.position.x;
         var pp_r = patrolPoint_Right.position.x;
@@ -154,11 +156,18 @@ public class EnemyPatrolBehaviour : MonoBehaviour
             SetState(PatrolState.GoRight);
             return;
         }
+        if (_enemy.playerChecker.FoundPlayer() && !_enemy.playerChecker.PlayerInRawSight())
+        {
+            if (facingRight)
+                SetState(PatrolState.GoLeft);
+            else
+                SetState(PatrolState.GoRight);
+        }
     }
 
     void SetState(PatrolState newState)
     {
-        Debug.Log("newState " + newState);
+        //Debug.Log("newState " + newState);
         var flipTrans = _enemy.npcController.flipTransfrom;
         state = newState;
         switch (state)

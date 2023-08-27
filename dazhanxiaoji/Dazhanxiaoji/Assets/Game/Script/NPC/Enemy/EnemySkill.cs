@@ -10,6 +10,14 @@ public class EnemySkill
     public string desc;
 
     public GameObject prefab;
-
     public float duration;
+    public float cd;
+
+    public float minDist;
+    public float maxDist;
+
+    public float cdTimer;
+
+
+    public ParticleSystem launchEffect;
 }

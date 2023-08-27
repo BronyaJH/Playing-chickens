@@ -5,7 +5,7 @@ public class PlayerJump : MonoBehaviour
 {
     public float jumpPower = 10;
 
-    private float _speedY;
+    //private float _speedY;
     public PlayerGroundDetecter groundDetecter;
     private PlayerMovePosition _movePosition;
     private bool _isFloating { get { return !groundDetecter.isGrounded; } }
@@ -71,7 +71,7 @@ public class PlayerJump : MonoBehaviour
 
     public void OnGrounded()
     {
-        _speedY = 0;
+        //_speedY = 0;
 
         var v = _movePosition.rb.velocity;
         v.y = 0;
