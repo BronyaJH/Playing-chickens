@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerHealthBehaviour : MonoBehaviour
 {
-    public HpbarFixedWidthBehaviour hpbar;
+    public HpBarFixedWidthBehaviour hpbar;
     private PlayerMove _playerMove;
     public int hpMax;
     private int _hp;
