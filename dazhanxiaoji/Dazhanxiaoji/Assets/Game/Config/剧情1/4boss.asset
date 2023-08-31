@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e24315b068eff2748b9790e75e774f6e, type: 3}
-  m_Name: me-1
+  m_Name: 4boss
   m_EditorClassIdentifier: 
-  characterId: girl
-  content: hello guy~hello guy~hello guy~hello guy~hello guy~hello guy~hello guy~hello
-    guy~hello guy~
-  soundName: 0
+  characterId: 'boss '
+  content: It will be your honor to be my sacrifice...
+  soundName: 1
   chatSpecialAction: 0
-  next: {fileID: 11400000, guid: b06cde9e840112844922f98c2d745a26, type: 2}
+  next: {fileID: 11400000, guid: 3fdea3072d86cbb4a80628afa576c2a8, type: 2}

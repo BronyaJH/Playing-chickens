@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e24315b068eff2748b9790e75e774f6e, type: 3}
-  m_Name: me-1
+  m_Name: "1\u5973\u4E3B"
   m_EditorClassIdentifier: 
   characterId: girl
-  content: hello guy~hello guy~hello guy~hello guy~hello guy~hello guy~hello guy~hello
-    guy~hello guy~
-  soundName: 0
+  content: "My dear, I would love to go to the temple and pray with you that we will
+    grow old together in the future.\n I heard from others that this temple is the
+    most spiritual."
+  soundName: 1
   chatSpecialAction: 0
-  next: {fileID: 11400000, guid: b06cde9e840112844922f98c2d745a26, type: 2}
+  next: {fileID: 0}
