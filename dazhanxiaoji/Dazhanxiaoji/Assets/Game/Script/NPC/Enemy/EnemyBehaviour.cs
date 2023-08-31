@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    public HpbarFixedWidthBehaviour hpbar;
+    public HpBarFixedWidthBehaviour hpbar;
     public int hpMax;
     private int _hp;
     bool _dead;
