@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: "1\u5973\u4E3B"
   m_EditorClassIdentifier: 
   characterId: girl
-  content: "My dear, I would love to go to the temple and pray with you that we will
-    grow old together in the future.\n I heard from others that this temple is the
-    most spiritual."
-  soundName: 1
+  content: "<color=#DDAABB>My <size=200%>DEAR</size>, I would <color=#FF80BB>love</color>
+    to go to the temple and pray with you that we will grow old together in the future.\n
+    I heard from others that this temple <size=125%>is the most spiritual~~~</size></color>"
+  soundName: "\u5973\u4E3B\u914D\u97F3-1-1"
   chatSpecialAction: 0
-  next: {fileID: 0}
+  next: {fileID: 11400000, guid: ed1485888ba8fc24c9ee295fb66869a5, type: 2}

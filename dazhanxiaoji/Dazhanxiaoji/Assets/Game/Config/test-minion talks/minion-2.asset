@@ -23,4 +23,4 @@ MonoBehaviour:
     guy~hello guy~'
   soundName: 0
   chatSpecialAction: 0
-  next: {fileID: 0}
+  next: {fileID: 11400000, guid: a1c963bb5e2653e4a8e7bf3c62e700d5, type: 2}
