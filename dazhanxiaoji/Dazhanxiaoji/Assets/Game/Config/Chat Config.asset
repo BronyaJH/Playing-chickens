@@ -20,17 +20,20 @@ MonoBehaviour:
     sp: {fileID: 21300000, guid: 8e68e6ccdd4c44249bcc6430a6da0ae1, type: 3}
     isRightSide: 1
   - id: minion
-    sp: {fileID: 21300000, guid: 6a6df290f1db7eb4d8bfce0172f08078, type: 3}
+    sp: {fileID: 21300000, guid: a160763bb6a51af45a9c848c3fbb99b3, type: 3}
     isRightSide: 0
   - id: girl
-    sp: {fileID: 21300000, guid: e447304be50b77f4b8092e2f618e095f, type: 3}
+    sp: {fileID: 21300000, guid: dd08b411bf7b23d458f05fb003f41275, type: 3}
     isRightSide: 1
   - id: boy
-    sp: {fileID: 21300000, guid: 97339e0da010dca4980790fcfc9d45e5, type: 3}
+    sp: {fileID: 21300000, guid: 416d8a70892c79b4ea790b2f8da9df80, type: 3}
     isRightSide: 1
   - id: boss
-    sp: {fileID: 21300000, guid: 965131be2aa1d6e4580bc4665727afe8, type: 3}
+    sp: {fileID: 21300000, guid: fd334e7ec8640414ab8df4de1e36a2b6, type: 3}
     isRightSide: 0
   - id: girl warrier
-    sp: {fileID: 21300000, guid: 965131be2aa1d6e4580bc4665727afe8, type: 3}
+    sp: {fileID: 21300000, guid: 6406646bbdedfe948b8a21ec16dc4153, type: 3}
+    isRightSide: 1
+  - id: "\u5B9D\u7BB1"
+    sp: {fileID: 21300000, guid: 59ab99b3c4b2d224f857a9bbacf370f1, type: 3}
     isRightSide: 1
