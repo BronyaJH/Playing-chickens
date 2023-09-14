@@ -12413,7 +12413,7 @@ Transform:
   m_GameObject: {fileID: 175180739}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2138850904}
@@ -23276,13 +23276,18 @@ GameObject:
   - component: {fileID: 241966696}
   - component: {fileID: 241966699}
   - component: {fileID: 241966698}
+  - component: {fileID: 241966701}
+  - component: {fileID: 241966700}
+  - component: {fileID: 241966702}
+  - component: {fileID: 241966704}
+  - component: {fileID: 241966703}
   m_Layer: 0
   m_Name: Girl-non-fight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &241966695
 Transform:
   m_ObjectHideFlags: 0
@@ -23363,6 +23368,78 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &241966700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241966694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d17033ab808bd04090e8da848473677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 0}
+  move: {fileID: 0}
+  attack: {fileID: 0}
+  animator: {fileID: 0}
+--- !u!114 &241966701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241966694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71b08a5895ddfb143979c13d28885981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  flipTransfrom: {fileID: 0}
+--- !u!114 &241966702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241966694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df90770c55d109498372cd00244bf16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpPower: 10
+  groundDetecter: {fileID: 0}
+--- !u!114 &241966703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241966694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653700066e9ac9b409822a6b8f367831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &241966704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241966694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8127eb5e020143343a05ffa954aa5f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpbar: {fileID: 0}
+  hpMax: 0
+  dieSound: 
+  deathFadeDelay: 0
 --- !u!1 &243128358
 GameObject:
   m_ObjectHideFlags: 0
@@ -52899,7 +52976,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.16, y: 54.73, z: -15}
+  m_LocalPosition: {x: -25.43, y: 54.45, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -64466,9 +64543,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 617282681}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1850545830}
@@ -81295,6 +81372,7 @@ MonoBehaviour:
   minion: {fileID: 306137718}
   boss: {fileID: 578967641}
   girl: {fileID: 241966697}
+  girlFight: {fileID: 787363961}
 --- !u!1 &781472462
 GameObject:
   m_ObjectHideFlags: 0
@@ -81630,6 +81708,8 @@ GameObject:
   - component: {fileID: 787363958}
   - component: {fileID: 787363959}
   - component: {fileID: 787363960}
+  - component: {fileID: 787363961}
+  - component: {fileID: 787363962}
   m_Layer: 9
   m_Name: Girl-fight
   m_TagString: Player
@@ -81645,7 +81725,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787363951}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25.16, y: 53.73, z: 0}
+  m_LocalPosition: {x: -25.43, y: 53.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -81780,6 +81860,33 @@ MonoBehaviour:
   move: {fileID: 0}
   attack: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &787363961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787363951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b06b44ae32f8644d9b2e8b22495e783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3.5
+  flipTransfrom: {fileID: 175180740}
+  myCollider: {fileID: 0}
+--- !u!114 &787363962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787363951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee27807935167574798cdd1b899195ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &790496338
 GameObject:
   m_ObjectHideFlags: 0
@@ -89040,7 +89147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947482265}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.32, y: 54.52, z: 0}
+  m_LocalPosition: {x: -24.31, y: 53.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -95730,7 +95837,7 @@ Transform:
   - {fileID: 240362085}
   - {fileID: 172387364}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1072578111
 GameObject:
@@ -158715,6 +158822,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35df6d995c475e54496c8115db48b5a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 778765693}
+  "\u4E0A\u9999\u4F4D\u7F6E1": {fileID: 0}
+  "\u4E0A\u9999\u4F4D\u7F6E2": {fileID: 0}
 --- !u!1 &1882977091
 GameObject:
   m_ObjectHideFlags: 0
@@ -159653,7 +159763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476447f15b471934e9d06d195cfe2daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testStartingChat: {fileID: 11400000, guid: 49578bdd7e8a37a4d95a262f729f3006, type: 2}
+  testStartingChat: {fileID: 0}
 --- !u!4 &1957147044
 Transform:
   m_ObjectHideFlags: 0
@@ -159668,7 +159778,7 @@ Transform:
   m_Children:
   - {fileID: 623374089}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1964080457
 GameObject:

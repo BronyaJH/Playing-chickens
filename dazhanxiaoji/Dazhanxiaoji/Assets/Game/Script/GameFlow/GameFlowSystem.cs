@@ -5,6 +5,11 @@ public class GameFlowSystem : MonoBehaviour
 {
     public static GameFlowSystem instance;
     // Use this for initialization
+    public TestCharacterAnimation character;
+
+    public Transform 上香位置1;
+    public Transform 上香位置2;
+
 
     private void Awake()
     {
@@ -12,13 +17,24 @@ public class GameFlowSystem : MonoBehaviour
     }
     void Start()
     {
-
+        TogglePlayerControl(false);
+        StartCoroutine(PlayCinematic_上香());
     }
 
-   IEnumerator PlayCinematic_上香()
+    void TogglePlayerControl(bool b)
+    {
+        character.girl.GetComponent<PlayerJump>().enabled = b;
+        character.girl.GetComponent<PlayerMove>().enabled = b;
+        //character.girl.GetComponent<PlayerAttackBehaviour>().enabled = b;
+        character.girlFight.GetComponent<PlayerJump>().enabled = b;
+        character.girlFight.GetComponent<PlayerMove>().enabled = b;
+        character.girlFight.GetComponent<PlayerAttackBehaviour>().enabled = b;
+    }
+    IEnumerator PlayCinematic_上香()
     {
         yield return null;
-    }
+        //character.boy.
+     }
 
     IEnumerator PlayCinematic_Boss抢男人()
     {

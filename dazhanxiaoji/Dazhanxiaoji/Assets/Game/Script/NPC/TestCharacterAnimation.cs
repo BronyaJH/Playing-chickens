@@ -7,7 +7,7 @@ public class TestCharacterAnimation : MonoBehaviour
     public NpcController minion;
     public NpcController boss;
     public NpcController girl;
-
+    public NpcController girlFight;
     //按下方向键移动
     //按下上键 boy是求救 boss吐火 minion攻击  girl Afraid
     //按下下键 boy是切换走路模式 boss死亡 minion

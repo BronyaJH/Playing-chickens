@@ -15,7 +15,8 @@ public class PlayerJump : MonoBehaviour
     private Animator _animator;
     private PlayerAttackBehaviour _attack;
     private PlayerHealthBehaviour _health;
-    private void Start()
+
+    private void Awake()
     {
         _movePosition = GetComponent<PlayerMovePosition>();
         _animator = GetComponentInChildren<Animator>();
