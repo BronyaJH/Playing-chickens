@@ -34,9 +34,7 @@ public class ChatPanelBehaviour : MonoBehaviour
     {
         string sound = chat.soundName;
         if (string.IsNullOrEmpty(sound))
-        {
             sound = "chat";
-        }
 
         SoundSystem.instance.Play(sound);
 
