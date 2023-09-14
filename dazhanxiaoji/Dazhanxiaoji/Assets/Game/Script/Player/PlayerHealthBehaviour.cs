@@ -1,4 +1,5 @@
-﻿using com;
+﻿using Assets.Game.Script.GameFlow;
+using com;
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
@@ -43,12 +44,24 @@ public class PlayerHealthBehaviour : MonoBehaviour
             Die();
     }
 
-    void Die()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        _dead = true;
+        if (collision.tag == "Kill")
+        {
+            this.Die(true);
+        }
+    }
 
+    public void Die(bool fromFall = false)
+    {
+        if (_dead) return;
+
+        _dead = true;
+        ReviveSystem.instance.QueueDie(fromFall);
         SoundSystem.instance.Play(dieSound);
-        _animator.SetTrigger("die");
+
+        if (!fromFall)
+            _animator.SetTrigger("die");
 
         SpriteRenderer[] srs = GetComponentsInChildren<SpriteRenderer>();
         foreach (var sr in srs)

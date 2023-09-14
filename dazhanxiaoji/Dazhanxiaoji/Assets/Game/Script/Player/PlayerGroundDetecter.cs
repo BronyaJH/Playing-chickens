@@ -7,8 +7,21 @@ public class PlayerGroundDetecter : MonoBehaviour
     public bool isGrounded;
     public List<GameObject> toIgnores;
     public PlayerJump jump;
-
     List<GameObject> _currentGrounds = new List<GameObject>();
+    public PlayerHealthBehaviour health;
+
+    private void Awake()
+    {
+        health = GetComponentInParent<PlayerHealthBehaviour>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag=="Kill")
+        {
+            health.Die(true);
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

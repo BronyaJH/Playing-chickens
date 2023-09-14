@@ -16,4 +16,4 @@ MonoBehaviour:
   content: Yeah, let's go together.
   soundName: 2
   chatSpecialAction: 0
-  next: {fileID: 11400000, guid: 49578bdd7e8a37a4d95a262f729f3006, type: 2}
+  next: {fileID: 0}
