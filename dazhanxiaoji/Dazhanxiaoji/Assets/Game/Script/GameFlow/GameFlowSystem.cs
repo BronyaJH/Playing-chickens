@@ -34,6 +34,23 @@ public class GameFlowSystem : MonoBehaviour
     {
         yield return null;
         //character.boy.
+
+        //面向左边不动 停留
+        //对话
+        //转向右边
+        //向右走
+        //boss从右边进来
+        //主角停下
+        //boss停下
+        //boss对话
+        //男主往左跑
+        //女主往左转身
+        //boss说话
+        //boss平移 抓男主
+        //一起走掉
+        //女主说话
+        //女主往前走两步
+        //开始可以控制
      }
 
     IEnumerator PlayCinematic_Boss抢男人()
