@@ -17,3 +17,4 @@ MonoBehaviour:
   soundName: 2
   chatSpecialAction: 0
   next: {fileID: 0}
+  flag: boss grab boy

@@ -1,26 +1,21 @@
 ﻿using Assets.Game.Script.GameFlow;
 using com;
 using DG.Tweening;
-using System.Collections;
 using UnityEngine;
 
 public class PlayerHealthBehaviour : MonoBehaviour
 {
     public HpBarFixedWidthBehaviour hpbar;
-    private PlayerMove _playerMove;
     public int hpMax;
     private int _hp;
     bool _dead;
 
     public string dieSound;
     public float deathFadeDelay;
-    private Animator _animator;
     // Use this for initialization
     private void Start()
     {
         hpbar.Set(1, true);
-        _playerMove = GetComponent<PlayerMove>();
-        _animator = GetComponentInChildren<Animator>();
         _hp = hpMax;
     }
 
@@ -61,7 +56,7 @@ public class PlayerHealthBehaviour : MonoBehaviour
         SoundSystem.instance.Play(dieSound);
 
         if (!fromFall)
-            _animator.SetTrigger("die");
+            PlayerBehaviour.instance.animator.SetTrigger("die");
 
         SpriteRenderer[] srs = GetComponentsInChildren<SpriteRenderer>();
         foreach (var sr in srs)

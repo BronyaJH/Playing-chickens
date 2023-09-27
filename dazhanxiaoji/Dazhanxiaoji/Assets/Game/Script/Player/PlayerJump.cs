@@ -4,22 +4,17 @@ using System.Collections;
 public class PlayerJump : MonoBehaviour
 {
     public float jumpPower = 10;
-
-    //private float _speedY;
     public PlayerGroundDetecter groundDetecter;
-    private PlayerMovePosition _movePosition;
-    private bool _isFloating { get { return !groundDetecter.isGrounded; } }
-    private bool _isAttacking;
-    private bool _isDead;
+    PlayerMovePosition _movePosition;
+    bool _isFloating { get { return !groundDetecter.isGrounded; } }
+    bool _isAttacking;
 
-    private Animator _animator;
-    private PlayerAttackBehaviour _attack;
-    private PlayerHealthBehaviour _health;
+    PlayerAttackBehaviour _attack;
+    PlayerHealthBehaviour _health;
 
-    private void Awake()
+    void Awake()
     {
         _movePosition = GetComponent<PlayerMovePosition>();
-        _animator = GetComponentInChildren<Animator>();
         _attack = GetComponent<PlayerAttackBehaviour>();
         _health = GetComponent<PlayerHealthBehaviour>();
     }
@@ -49,12 +44,12 @@ public class PlayerJump : MonoBehaviour
         DoJump();
     }
 
-    bool canNotJump { get { return _isFloating || _isAttacking || _isDead; } }
+    bool canNotJump { get { return _isFloating || _isAttacking || PlayerBehaviour.instance.health.isDead; } }
 
     void DoJump()
     {
         //_speedY = jumpPower;
-        _animator.SetBool("walk", false);
+        PlayerBehaviour.instance.animator.SetBool("walk", false);
         _movePosition.rb.AddForce(new Vector2(0, jumpPower));
     }
 
@@ -73,12 +68,11 @@ public class PlayerJump : MonoBehaviour
     public void OnGrounded()
     {
         //_speedY = 0;
-
         var v = _movePosition.rb.velocity;
         v.y = 0;
         _movePosition.rb.velocity = v;
         _movePosition.StopXMovement();
 
-        _animator.SetBool("walk", false);
+        PlayerBehaviour.instance.animator.SetBool("walk", false);
     }
 }

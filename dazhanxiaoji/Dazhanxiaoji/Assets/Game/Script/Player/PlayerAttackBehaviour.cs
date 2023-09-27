@@ -7,8 +7,6 @@ public class PlayerAttackBehaviour : MonoBehaviour
     public float attackInterval;
 
     private float nextCanAttackTimestamp;
-
-    private Animator _animator;
     private PlayerJump _jump;
 
     public Transform damageOrigin;
@@ -21,7 +19,6 @@ public class PlayerAttackBehaviour : MonoBehaviour
     private void Awake()
     {
         nextCanAttackTimestamp = 0;
-        _animator = GetComponentInChildren<Animator>();
         _jump = GetComponent<PlayerJump>();
         _health = GetComponent<PlayerHealthBehaviour>();
     }
@@ -34,6 +31,8 @@ public class PlayerAttackBehaviour : MonoBehaviour
     void CheckAttack()
     {
         if (_health.isDead)
+            return;
+        if (!PlayerBehaviour.instance.isWarrierState)
             return;
         if (Input.GetKeyDown(KeyCode.J))
             TryAttack();
@@ -51,7 +50,7 @@ public class PlayerAttackBehaviour : MonoBehaviour
 
     void PerformAttack()
     {
-        _animator.SetTrigger("attack");
+        PlayerBehaviour.instance.animator.SetTrigger("attack");
         nextCanAttackTimestamp = Time.time + attackInterval;
     }
 

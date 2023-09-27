@@ -15,7 +15,14 @@ public class NpcController : MonoBehaviour
     {
         _movePosition = GetComponent<NpcMovePosition>();
         myCollider = GetComponent<Collider2D>();
-        _animator = GetComponentInChildren<Animator>();
+        if (_animator == null)
+            _animator = GetComponentInChildren<Animator>();
+    }
+
+    public void Reinit(Animator a, Transform f)
+    {
+        _animator = a;
+        flipTransfrom = f;
     }
 
     private void FixedUpdate()

@@ -8,6 +8,8 @@ public class ChatSystem : MonoBehaviour
 
     private ChatPrototype _chat;
 
+    public string flag;
+
     private void Awake()
     {
         instance = this;
@@ -56,6 +58,7 @@ public class ChatSystem : MonoBehaviour
     {
         if (_chat == null)
             return;
+        flag = _chat.flag;
 
         if (_chat.next == null)
         {

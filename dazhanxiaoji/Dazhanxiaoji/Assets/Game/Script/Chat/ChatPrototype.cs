@@ -16,4 +16,6 @@ public class ChatPrototype : ScriptableObject
         None,
 
     }
+
+    public string flag;
 }

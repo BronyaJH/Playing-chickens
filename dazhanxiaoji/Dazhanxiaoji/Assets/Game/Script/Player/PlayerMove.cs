@@ -7,9 +7,6 @@ public class PlayerMove : MonoBehaviour
     public float speed;
     private PlayerMovePosition _movePosition;
     private float _speedX;
-    public Transform flipTransfrom;
-
-    private Animator _animator;
     private PlayerJump _jump;
     private PlayerAttackBehaviour _attack;
     private PlayerHealthBehaviour _health;
@@ -18,7 +15,6 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         _movePosition = GetComponent<PlayerMovePosition>();
-        _animator = GetComponentInChildren<Animator>();
         _jump = GetComponent<PlayerJump>();
         _attack = GetComponent<PlayerAttackBehaviour>();
         _health = GetComponent<PlayerHealthBehaviour>();
@@ -54,7 +50,7 @@ public class PlayerMove : MonoBehaviour
             {
                 _speedX = 0;
             }
-            _animator.SetBool("walk", false);
+            PlayerBehaviour.instance.animator.SetBool("walk", false);
             return;
         }
 
@@ -68,7 +64,7 @@ public class PlayerMove : MonoBehaviour
         {
             isMoving = true;
             if (!_jump.IsJumping)
-                _animator.SetBool("walk", true);
+                PlayerBehaviour.instance.animator.SetBool("walk", true);
             FlipRight();
         }
         else if (_speedX < 0)
@@ -76,13 +72,13 @@ public class PlayerMove : MonoBehaviour
             isMoving = true;
             FlipLeft();
             if (!_jump.IsJumping)
-                _animator.SetBool("walk", true);
+                PlayerBehaviour.instance.animator.SetBool("walk", true);
         }
         else
         {
             isMoving = false;
             if (!_jump.IsJumping)
-                _animator.SetBool("walk", false);
+                PlayerBehaviour.instance.animator.SetBool("walk", false);
         }
     }
 
@@ -99,11 +95,11 @@ public class PlayerMove : MonoBehaviour
 
     void FlipRight()
     {
-        flipTransfrom.localScale = new Vector3(1, 1, 1);
+        PlayerBehaviour.instance.flip.localScale = new Vector3(1, 1, 1);
     }
 
     void FlipLeft()
     {
-        flipTransfrom.localScale = new Vector3(-1, 1, 1);
+        PlayerBehaviour.instance.flip.localScale = new Vector3(-1, 1, 1);
     }
 }
