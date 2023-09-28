@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24315b068eff2748b9790e75e774f6e, type: 3}
   m_Name: 8boss
   m_EditorClassIdentifier: 
-  characterId: 'boss '
+  characterId: minion
   content: Foolish man, Selfishness only makes you more delicious... I have changed
     my mind, and thy poor companion is enough to fill me up. Ha ha ha.
   soundName: 1

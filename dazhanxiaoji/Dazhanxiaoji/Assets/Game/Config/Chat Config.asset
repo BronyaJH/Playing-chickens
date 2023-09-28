@@ -16,9 +16,6 @@ MonoBehaviour:
   - id: tree
     sp: {fileID: 21300000, guid: 8d768bf1943674941a590109dbd632c6, type: 3}
     isRightSide: 1
-  - id: me
-    sp: {fileID: 21300000, guid: 8e68e6ccdd4c44249bcc6430a6da0ae1, type: 3}
-    isRightSide: 1
   - id: minion
     sp: {fileID: 21300000, guid: a160763bb6a51af45a9c848c3fbb99b3, type: 3}
     isRightSide: 0
@@ -31,7 +28,7 @@ MonoBehaviour:
   - id: boss
     sp: {fileID: 21300000, guid: fd334e7ec8640414ab8df4de1e36a2b6, type: 3}
     isRightSide: 0
-  - id: girl warrier
+  - id: girl2
     sp: {fileID: 21300000, guid: 6406646bbdedfe948b8a21ec16dc4153, type: 3}
     isRightSide: 1
   - id: "\u5B9D\u7BB1"

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24315b068eff2748b9790e75e774f6e, type: 3}
   m_Name: 3boss
   m_EditorClassIdentifier: 
-  characterId: 'boss '
+  characterId: minion
   content: It's human, I smell delicious food...
   soundName: 1
   chatSpecialAction: 0

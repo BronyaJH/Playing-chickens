@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24315b068eff2748b9790e75e774f6e, type: 3}
   m_Name: 6boss
   m_EditorClassIdentifier: 
-  characterId: 'boss '
+  characterId: minion
   content: How lucky... There are two delicacies today? I'll have to choose... well...
     this little girl, you look tastier than that guy.
   soundName: 1
