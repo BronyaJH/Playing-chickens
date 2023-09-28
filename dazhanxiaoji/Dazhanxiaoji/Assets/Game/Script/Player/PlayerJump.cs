@@ -50,6 +50,7 @@ public class PlayerJump : MonoBehaviour
     {
         //_speedY = jumpPower;
         PlayerBehaviour.instance.animator.SetBool("walk", false);
+        PlayerBehaviour.instance.animator.SetTrigger("jump");
         _movePosition.rb.AddForce(new Vector2(0, jumpPower));
     }
 
