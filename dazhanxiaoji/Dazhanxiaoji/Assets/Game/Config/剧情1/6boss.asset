@@ -17,4 +17,5 @@ MonoBehaviour:
     this little girl, you look tastier than that guy.
   soundName: 1
   chatSpecialAction: 0
-  next: {fileID: 11400000, guid: 35828f9bf06b6ff4c93ebc806b2ea9e4, type: 2}
+  next: {fileID: 0}
+  flag: grab boy 2

@@ -17,4 +17,5 @@ MonoBehaviour:
     care of yourself!
   soundName: 2
   chatSpecialAction: 0
-  next: {fileID: 11400000, guid: 59d1c6b6b872b3d47a53a819fa4f4910, type: 2}
+  next: {fileID: 0}
+  flag: grab boy 3

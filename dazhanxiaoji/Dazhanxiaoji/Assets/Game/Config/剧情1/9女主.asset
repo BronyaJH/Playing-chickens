@@ -17,4 +17,5 @@ MonoBehaviour:
     He must have been expecting me to save him! Waiting for me!
   soundName: 1
   chatSpecialAction: 0
-  next: {fileID: 11400000, guid: 54db4a6ac6d39f84eb331a2f370f3c9f, type: 2}
+  next: {fileID: 0}
+  flag: grab boy 5

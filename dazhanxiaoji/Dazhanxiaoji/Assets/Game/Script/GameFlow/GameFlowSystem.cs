@@ -60,20 +60,24 @@ public class GameFlowSystem : MonoBehaviour
         character.girl.FlipRight();
         yield return new WaitForSeconds(delays_上香[4]);
         ChatSystem.instance.ShowChat(chats_上香[0]);
-
-        while (ChatSystem.instance.flag!="boss grab boy")
-        {
+        while (ChatSystem.instance.flag!="grab boy 1")
             yield return null;
-        }
 
         grabMinion.transform.DOMove(grab位置2.position, 2).SetEase(Ease.OutBack);
+        yield return new WaitForSeconds(delays_上香[5]);
+        character.girl.FlipLeft();
+        yield return new WaitForSeconds(delays_上香[6]);
+        ChatSystem.instance.ShowChat(chats_上香[1]);
+        while (ChatSystem.instance.flag != "grab boy 2")
+            yield return null;
+
         //面向左边不动 停留
         //对话
         //转向右边
         //向右走
         yield return new WaitForSeconds(delays_上香[4]);
         //boss从右边进来
-        yield return new WaitForSeconds(delays_上香[5]);
+        
         //主角停下
         yield return new WaitForSeconds(delays_上香[6]);
         //boss停下

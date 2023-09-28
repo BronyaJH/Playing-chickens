@@ -17,3 +17,4 @@ MonoBehaviour:
   soundName: 1
   chatSpecialAction: 0
   next: {fileID: 11400000, guid: 3fdea3072d86cbb4a80628afa576c2a8, type: 2}
+  flag: grab boy 2

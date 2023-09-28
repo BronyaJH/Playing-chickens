@@ -17,4 +17,5 @@ MonoBehaviour:
     my mind, and thy poor companion is enough to fill me up. Ha ha ha.
   soundName: 1
   chatSpecialAction: 0
-  next: {fileID: 11400000, guid: d9fb2ff4238c42e44a1e4de34a6309f0, type: 2}
+  next: {fileID: 0}
+  flag: grab boy 4

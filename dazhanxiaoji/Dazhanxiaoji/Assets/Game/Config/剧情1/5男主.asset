@@ -17,4 +17,5 @@ MonoBehaviour:
     you!
   soundName: 2
   chatSpecialAction: 0
-  next: {fileID: 11400000, guid: 983b61cf676ba4144b3699ef759e3eb1, type: 2}
+  next: {fileID: 11400000, guid: 59d1c6b6b872b3d47a53a819fa4f4910, type: 2}
+  flag: 
