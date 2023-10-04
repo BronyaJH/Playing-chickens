@@ -155154,13 +155154,13 @@ MonoBehaviour:
   gameProcess: {fileID: 11400000, guid: 7eeebc71d874dc942b6b133ea8072792, type: 2}
   "skip_\u4E0A\u9999": 0
   "delays_\u4E0A\u9999":
-  - 1.25
+  - 1.2
   - 1
   - 2
   - 1
   - 1
   - 1
-  - 1.2
+  - 1.15
   - 2.5
   - 1
   - 3

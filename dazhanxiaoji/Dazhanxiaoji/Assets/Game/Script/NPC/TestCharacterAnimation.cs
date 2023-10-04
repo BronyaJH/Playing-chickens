@@ -12,7 +12,7 @@ public class TestCharacterAnimation : MonoBehaviour
     //按下上键 boy是求救 boss吐火 minion攻击  girl Afraid
     //按下下键 boy是切换走路模式 boss死亡 minion
 
-    void Start()
+    void Awake()
     {
         GameFlowSystem.instance.character = this;
     }

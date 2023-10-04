@@ -11,7 +11,7 @@ public class NpcController : MonoBehaviour
     public Collider2D myCollider;
     private Animator _animator;
     public bool isMoving { get; private set; }
-    void Start()
+    void Awake()
     {
         _movePosition = GetComponent<NpcMovePosition>();
         myCollider = GetComponent<Collider2D>();

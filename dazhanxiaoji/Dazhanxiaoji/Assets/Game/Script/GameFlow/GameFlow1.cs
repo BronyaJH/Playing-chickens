@@ -34,9 +34,11 @@ public class GameFlow1 : GameFlowSystem
         grabMinion.transform.position = grab位置1.position;
         TogglePlayerControl(false);
 
-
         character.boy.FlipLeft();
         character.girl.FlipLeft();
+
+        yield return null;
+
         character.boy.SetAnimBool("pride", true);
         yield return new WaitForSeconds(delays_上香[0]);
         character.girl.SetMove(false, true);
