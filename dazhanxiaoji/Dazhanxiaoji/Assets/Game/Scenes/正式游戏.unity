@@ -155092,7 +155092,6 @@ GameObject:
   - component: {fileID: 1881901639}
   - component: {fileID: 1881901641}
   - component: {fileID: 1881901640}
-  - component: {fileID: 1881901642}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -155152,7 +155151,7 @@ MonoBehaviour:
   character: {fileID: 778765693}
   girlHpBarCg: {fileID: 722403634}
   bossHpBarCg: {fileID: 688916370}
-  "skip_\u4E0A\u9999": 0
+  "skip_\u4E0A\u9999": 1
   "delays_\u4E0A\u9999":
   - 1.25
   - 1
@@ -155195,18 +155194,6 @@ MonoBehaviour:
   "delays_\u5C71\u6D1E\u4E2D": []
   "chats_\u5C71\u6D1E\u4E2D": []
   psChange: {fileID: 0}
---- !u!114 &1881901642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1881901638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8202f3240a93dfc42aca8d7f93693567, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1882977091
 GameObject:
   m_ObjectHideFlags: 0
