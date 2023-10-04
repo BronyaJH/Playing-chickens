@@ -32,12 +32,6 @@ public class ChatPanelBehaviour : MonoBehaviour
 
     public void Show(ChatPrototype chat)
     {
-        if (chat == null)
-        {
-            Debug.LogWarning("show empty chat!");
-            return;
-        }
-
         string sound = chat.soundName;
         if (string.IsNullOrEmpty(sound))
             sound = "chat";

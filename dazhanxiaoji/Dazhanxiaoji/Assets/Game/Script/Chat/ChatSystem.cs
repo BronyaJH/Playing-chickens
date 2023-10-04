@@ -34,6 +34,12 @@ public class ChatSystem : MonoBehaviour
 
     public void ShowChat(ChatPrototype chat)
     {
+        if (chat == null)
+        {
+            Debug.LogWarning("show empty chat!");
+            return;
+        }
+
         PauseSystem.instance.Pause();
         _chat = chat;
         ChatPanelBehaviour.instance.Show(_chat);

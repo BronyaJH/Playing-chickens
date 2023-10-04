@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class HeadKickSlay : MonoBehaviour
 {
-    public bool beSlayedOnHeadKick;
     public Transform headTrans;
     public float headCircleSize;
+    public int damage = 10;
 
     private void Start()
     {

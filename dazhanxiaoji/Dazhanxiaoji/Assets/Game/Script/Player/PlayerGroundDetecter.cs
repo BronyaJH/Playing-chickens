@@ -17,7 +17,7 @@ public class PlayerGroundDetecter : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag=="Kill")
+        if (collision.tag == "Kill")
         {
             health.Die(true);
         }
@@ -30,17 +30,17 @@ public class PlayerGroundDetecter : MonoBehaviour
         //Debug.Log("OnCollisionEnter2D " + collision.gameObject);
 
         var colEnemy = collision.gameObject.GetComponent<EnemyBehaviour>();
-        if (colEnemy!=null)
+        if (colEnemy != null)
         {
-            if (colEnemy.headKickSlay!=null)
+            if (colEnemy.headKickSlay != null)
             {
                 if (colEnemy.headKickSlay.CheckHit(collision))
                 {
-                    colEnemy.TakeFatalDamage();
+                    colEnemy.TakeDamage(colEnemy.headKickSlay.damage);
                 }
             }
         }
-       
+
         //Debug.Log(collision.contacts.Length);
         if (!_currentGrounds.Contains(collision.gameObject))
             _currentGrounds.Add(collision.gameObject);

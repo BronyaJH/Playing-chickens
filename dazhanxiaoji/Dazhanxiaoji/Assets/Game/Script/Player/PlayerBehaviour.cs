@@ -43,5 +43,6 @@ public class PlayerBehaviour : MonoBehaviour
         flip_nonWarrier.gameObject.SetActive(!b);
 
         _npcController.Reinit(animator, flip);
+        health.FullFill(b);
     }
 }
