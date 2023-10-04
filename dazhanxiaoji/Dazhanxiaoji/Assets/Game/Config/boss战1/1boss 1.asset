@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e24315b068eff2748b9790e75e774f6e, type: 3}
-  m_Name: 1boss
+  m_Name: 1boss 1
   m_EditorClassIdentifier: 
   characterId: boss
-  content: Foolish people...
+  content: are you willing to fight against me for the sake of a selfish, pathetic
+    man? No matter...all your struggles will be futile in the face of my absolute
+    strength!
   soundName: 1
   chatSpecialAction: 0
-  next: {fileID: 11400000, guid: d964bce1d3374ca4788775f21cbb1474, type: 2}
+  next: {fileID: 11400000, guid: 9f4ce8bce7aaaa243aa2b20ccfff958b, type: 2}
   flag: 

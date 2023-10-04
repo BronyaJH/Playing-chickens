@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24315b068eff2748b9790e75e774f6e, type: 3}
   m_Name: 2girl
   m_EditorClassIdentifier: 
-  characterId: boss
-  content: Impossible...why can you possess such a godly power? It's the Sword of
-    Heaven...Why is it still there after I destroyed it? Could it be...that the sword
-    was not destroyed at all, and that it is still hidden under the cliff?
+  characterId: girl
+  content: Impossible...
   soundName: 1
   chatSpecialAction: 0
-  next: {fileID: 0}
+  next: {fileID: 11400000, guid: 975f39f5c6e70a943b7f4fc417ce145d, type: 2}
+  flag: 

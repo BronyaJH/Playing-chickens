@@ -93,7 +93,7 @@ namespace Assets.Game.Script.GameFlow
             {
                 if (deathPhase == 1)
                 {
-                    _pendingDieTiming = Time.time + 4f;
+                    _pendingDieTiming = Time.time + 0f;
                     return;
                 }
 

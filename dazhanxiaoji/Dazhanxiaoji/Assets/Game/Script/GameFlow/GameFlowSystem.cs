@@ -185,9 +185,6 @@ public class GameFlowSystem : MonoBehaviour
         }
     }
 
-    public float[] delays_山洞中;
-    public ChatPrototype[] chats_山洞中;
-    public ParticleSystem psChange;
 
     IEnumerator PlayerBecomeWarrior()
     {
@@ -230,12 +227,11 @@ public class GameFlowSystem : MonoBehaviour
         while (!character.girl.GetComponent<PlayerHealthBehaviour>().isDead)
             yield return null;
 
-        Debug.Log("player die in 打输的Boss战");
-
+        Debug.Log("player died in 打输的Boss战");
         StopCoroutine(boySosCoroutine);
-
+        yield return new WaitForSeconds(delays_打输的Boss战[0]);
         ChatSystem.instance.ShowChat(chats_打输的Boss战[0]);
-        while (ChatSystem.instance.flag != "before boss fight 1")
+        while (ChatSystem.instance.flag != "in cave")
             yield return null;
 
 
@@ -244,17 +240,6 @@ public class GameFlowSystem : MonoBehaviour
         while (ChatSystem.instance.flag != "grab boy 3")
             yield return null;
 
-
-        character.boy.SetAnimBool("pride", false);
-        yield return new WaitForSeconds(delays_上香[10]);
-
-
-        ChatSystem.instance.ShowChat(chats_上香[3]);
-        while (ChatSystem.instance.flag != "grab boy 4")
-            yield return null;
-        yield return new WaitForSeconds(delays_上香[11]);
-        character.girl.SetAnimTrigger("afraid");
-        character.boy.SetMove(false, true);
 
         yield return new WaitForSeconds(delays_上香[12]);
         ChatSystem.instance.ShowChat(chats_上香[4]);
@@ -285,6 +270,9 @@ public class GameFlowSystem : MonoBehaviour
         yield return null;
     }
 
+    public float[] delays_山洞中;
+    public ChatPrototype[] chats_山洞中;
+    public ParticleSystem psChange;
     IEnumerator PlayCinematic_宝箱前对话()
     {
         yield return null;
