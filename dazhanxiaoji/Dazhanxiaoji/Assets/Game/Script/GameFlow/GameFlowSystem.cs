@@ -69,6 +69,7 @@ public class GameFlowSystem : MonoBehaviour
 
         character.girl.FlipLeft();
         yield return new WaitForSeconds(delays_上香[5]);
+        grabMinion.gameObject.SetActive(true);
         grabMinion.transform.DOMove(grab位置2.position, 2).SetEase(Ease.OutBack);
 
         yield return new WaitForSeconds(delays_上香[6]);
@@ -188,10 +189,14 @@ public class GameFlowSystem : MonoBehaviour
         //逐渐黑屏
         //出现女主的话 分三段
         //逐渐亮屏幕 已经在洞穴里了
-        //TogglePlayerControl(false);
-        boySosCoroutine = StartCoroutine(boySos());
+        TogglePlayerControl(true);
+
+        character.boy.GetComponent<Rigidbody2D>().isKinematic = true;
+        character.boy.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         character.boy.transform.SetParent(boyTrunk);
         character.boy.transform.localPosition = Vector3.zero;
+        character.boy.gameObject.SetActive(true);
+        boySosCoroutine = StartCoroutine(boySos());
         character.girl.SetAnimTrigger("afraid");
 
         while (!character.girl.GetComponent<PlayerHealthBehaviour>().isDead)

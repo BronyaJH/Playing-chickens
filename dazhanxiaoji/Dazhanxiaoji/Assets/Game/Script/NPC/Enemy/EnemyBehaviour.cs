@@ -25,6 +25,7 @@ public class EnemyBehaviour : MonoBehaviour
     [HideInInspector]
     public Animator animator;
     public bool isBoss;
+
     private void Awake()
     {
         npcController = GetComponent<NpcController>();

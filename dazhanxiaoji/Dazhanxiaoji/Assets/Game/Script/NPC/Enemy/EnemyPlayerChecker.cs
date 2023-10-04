@@ -20,7 +20,13 @@ public class EnemyPlayerChecker : MonoBehaviour
         if (permanentAlert && _permanentAlertRes)
         {
             if (_enemy.isBoss)
-                GameFlowSystem.instance.bossHpBarCg.alpha = 0;
+                GameFlowSystem.instance.bossHpBarCg.alpha = 1;
+
+            if (PlayerBehaviour.instance.health.isDead)
+            {
+                _permanentAlertRes = false;
+                return false;
+            }
             return true;
         }
 
