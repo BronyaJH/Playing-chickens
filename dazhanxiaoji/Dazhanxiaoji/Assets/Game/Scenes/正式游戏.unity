@@ -47033,7 +47033,7 @@ MonoBehaviour:
   evts:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1881901641}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameFlowSystem, Assembly-CSharp
         m_MethodName: "PlayCinematic_\u6253\u8F93\u7684Boss\u6218"
         m_Mode: 1
@@ -155090,8 +155090,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1881901639}
-  - component: {fileID: 1881901641}
   - component: {fileID: 1881901640}
+  - component: {fileID: 1881901641}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -155145,13 +155145,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1881901638}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35df6d995c475e54496c8115db48b5a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 2510fdacbdd5131488e8a2e497e1740e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 778765693}
+  character: {fileID: 0}
   girlHpBarCg: {fileID: 722403634}
   bossHpBarCg: {fileID: 688916370}
-  "skip_\u4E0A\u9999": 1
+  gameProcess: {fileID: 11400000, guid: 7eeebc71d874dc942b6b133ea8072792, type: 2}
+  "skip_\u4E0A\u9999": 0
   "delays_\u4E0A\u9999":
   - 1.25
   - 1
@@ -155186,14 +155187,9 @@ MonoBehaviour:
   - 1
   - 1
   - 1
-  - 1
-  - 1
   "chats_\u6253\u8F93\u7684Boss\u6218":
   - {fileID: 11400000, guid: 7c8f648088125264785d410d5144d500, type: 2}
   boyTrunk: {fileID: 461576095}
-  "delays_\u5C71\u6D1E\u4E2D": []
-  "chats_\u5C71\u6D1E\u4E2D": []
-  psChange: {fileID: 0}
 --- !u!1 &1882977091
 GameObject:
   m_ObjectHideFlags: 0
