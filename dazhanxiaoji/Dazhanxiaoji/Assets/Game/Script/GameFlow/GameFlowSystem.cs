@@ -202,6 +202,7 @@ public class GameFlowSystem : MonoBehaviour
         while (!character.girl.GetComponent<PlayerHealthBehaviour>().isDead)
             yield return null;
 
+        Debug.Log("player die in 打输的Boss战");
 
         StopCoroutine(boySosCoroutine);
         ChatSystem.instance.ShowChat(chats_打输的Boss战[0]);
