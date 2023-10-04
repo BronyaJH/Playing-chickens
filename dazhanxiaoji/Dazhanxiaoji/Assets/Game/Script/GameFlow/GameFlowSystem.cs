@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 public class GameFlowSystem : MonoBehaviour
 {
     public static GameFlowSystem instance;
-    // Use this for initialization
+    [HideInInspector]
     public TestCharacterAnimation character;
 
     public CanvasGroup girlHpBarCg;
@@ -21,6 +21,8 @@ public class GameFlowSystem : MonoBehaviour
     {
         instance = this;
     }
+
+
     void Start()
     {
         bossHpBarCg.alpha = 0;

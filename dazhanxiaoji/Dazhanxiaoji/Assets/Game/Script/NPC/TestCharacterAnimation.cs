@@ -14,7 +14,7 @@ public class TestCharacterAnimation : MonoBehaviour
 
     void Start()
     {
-
+        GameFlowSystem.instance.character = this;
     }
 
     void Update()

@@ -155152,7 +155152,7 @@ MonoBehaviour:
   character: {fileID: 778765693}
   girlHpBarCg: {fileID: 722403634}
   bossHpBarCg: {fileID: 688916370}
-  "skip_\u4E0A\u9999": 1
+  "skip_\u4E0A\u9999": 0
   "delays_\u4E0A\u9999":
   - 1.25
   - 1
