@@ -26,7 +26,7 @@ public class GameFlowSystem : MonoBehaviour
         if (!skip_上香)
             StartCoroutine(Cinematic_上香());
         else
-            TogglePlayerControl(false);
+            TogglePlayerControl(true);
     }
 
     void TogglePlayerControl(bool b)
@@ -34,6 +34,7 @@ public class GameFlowSystem : MonoBehaviour
         character.girl.GetComponent<PlayerJump>().enabled = b;
         character.girl.GetComponent<PlayerMove>().enabled = b;
         character.girl.GetComponent<PlayerAttackBehaviour>().enabled = b;
+        character.girl.GetComponent<NpcController>().enabled = !b;
     }
 
     public float[] delays_上香;
