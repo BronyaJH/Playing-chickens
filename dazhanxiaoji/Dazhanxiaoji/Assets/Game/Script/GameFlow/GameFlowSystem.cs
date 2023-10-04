@@ -13,35 +13,37 @@ public class GameFlowSystem : MonoBehaviour
     public CanvasGroup girlHpBarCg;
     public CanvasGroup bossHpBarCg;
 
+    public bool skip_上香;
+
     private void Awake()
     {
         instance = this;
     }
     void Start()
     {
-        StartCoroutine(PlayCinematic_上香());
         bossHpBarCg.alpha = 0;
-        girlHpBarCg.alpha = 0;
+
+        if (!skip_上香)
+            StartCoroutine(Cinematic_上香());
+        else
+            TogglePlayerControl(false);
     }
 
     void TogglePlayerControl(bool b)
     {
         character.girl.GetComponent<PlayerJump>().enabled = b;
         character.girl.GetComponent<PlayerMove>().enabled = b;
-        //character.girl.GetComponent<PlayerAttackBehaviour>().enabled = b;
-        character.girlFight.GetComponent<PlayerJump>().enabled = b;
-        character.girlFight.GetComponent<PlayerMove>().enabled = b;
-        character.girlFight.GetComponent<PlayerAttackBehaviour>().enabled = b;
+        character.girl.GetComponent<PlayerAttackBehaviour>().enabled = b;
     }
-
 
     public float[] delays_上香;
     public ChatPrototype[] chats_上香;
     public GameObject grabMinion;
     public Transform grab位置1;
     public Transform grab位置2;
-    IEnumerator PlayCinematic_上香()
+    IEnumerator Cinematic_上香()
     {
+        girlHpBarCg.alpha = 0;
         grabMinion.transform.position = grab位置1.position;
         TogglePlayerControl(false);
 
@@ -107,7 +109,7 @@ public class GameFlowSystem : MonoBehaviour
         character.boy.SetAnimTrigger("sos");
         character.boy.SetAnimBool("pride", false);
         yield return new WaitForSeconds(delays_上香[10]);
-       
+
 
         ChatSystem.instance.ShowChat(chats_上香[3]);
         while (ChatSystem.instance.flag != "grab boy 4")
@@ -115,14 +117,14 @@ public class GameFlowSystem : MonoBehaviour
         yield return new WaitForSeconds(delays_上香[11]);
         character.girl.SetAnimTrigger("afraid");
         character.boy.SetMove(false, true);
-        
+
         yield return new WaitForSeconds(delays_上香[12]);
         ChatSystem.instance.ShowChat(chats_上香[4]);
         while (ChatSystem.instance.flag != "grab boy 5")
             yield return null;
         grabMinion.transform.DOMove(character.boy.transform.position, 2.5f).SetEase(Ease.InOutCubic);
         character.boy.SetMove(false, false);
-       
+
 
         yield return new WaitForSeconds(delays_上香[13]);
         grabMinion.GetComponentInChildren<Animator>().SetTrigger("melee");
@@ -156,28 +158,94 @@ public class GameFlowSystem : MonoBehaviour
 
     }
 
-    IEnumerator PlayCinematic_Boss抢男人()
+    public float[] delays_打输的Boss战;
+    public ChatPrototype[] chats_打输的Boss战;
+    public CanvasGroup cgBlack;
+    public Transform boyTrunk;
+    public Coroutine boySosCoroutine;
+    public void PlayCinematic_打输的Boss战()
     {
-        yield return null;
+        StartCoroutine(Cinematic_打输的Boss战());
     }
 
-    IEnumerator PlayCinematic_发誓找男人()
+    IEnumerator boySos()
     {
-        yield return null;
+        while (true)
+        {
+            yield return new WaitForSeconds(2.0f);
+            character.boy.SetAnimTrigger("sos");
+            yield return new WaitForSeconds(0.8f);
+            character.boy.SetAnimTrigger("sos");
+        }
     }
 
-    IEnumerator PlayCinematic_小怪叫嚣()
+    IEnumerator Cinematic_打输的Boss战()
     {
-        yield return null;
-    }
-
-    IEnumerator PlayCinematic_打输的Boss战()
-    {
+        //对战
         //玩家被打败
         //boss喊话
         //逐渐黑屏
         //出现女主的话 分三段
         //逐渐亮屏幕 已经在洞穴里了
+        //TogglePlayerControl(false);
+        boySosCoroutine = StartCoroutine(boySos());
+        character.boy.transform.SetParent(boyTrunk);
+        character.boy.transform.localPosition = Vector3.zero;
+        character.girl.SetAnimTrigger("afraid");
+
+        while (!character.girl.GetComponent<PlayerHealthBehaviour>().isDead)
+            yield return null;
+
+
+        StopCoroutine(boySosCoroutine);
+        ChatSystem.instance.ShowChat(chats_打输的Boss战[0]);
+        while (ChatSystem.instance.flag != "before boss fight 1")
+            yield return null;
+
+
+
+        ChatSystem.instance.ShowChat(chats_上香[2]);
+        while (ChatSystem.instance.flag != "grab boy 3")
+            yield return null;
+
+
+        character.boy.SetAnimBool("pride", false);
+        yield return new WaitForSeconds(delays_上香[10]);
+
+
+        ChatSystem.instance.ShowChat(chats_上香[3]);
+        while (ChatSystem.instance.flag != "grab boy 4")
+            yield return null;
+        yield return new WaitForSeconds(delays_上香[11]);
+        character.girl.SetAnimTrigger("afraid");
+        character.boy.SetMove(false, true);
+
+        yield return new WaitForSeconds(delays_上香[12]);
+        ChatSystem.instance.ShowChat(chats_上香[4]);
+        while (ChatSystem.instance.flag != "grab boy 5")
+            yield return null;
+        grabMinion.transform.DOMove(character.boy.transform.position, 2.5f).SetEase(Ease.InOutCubic);
+        character.boy.SetMove(false, false);
+
+
+        yield return new WaitForSeconds(delays_上香[13]);
+        grabMinion.GetComponentInChildren<Animator>().SetTrigger("melee");
+        yield return new WaitForSeconds(0.35f);
+        character.boy.transform.SetParent(grabMinion.transform);
+        character.boy.GetComponent<Rigidbody2D>().isKinematic = true;
+        grabMinion.transform.DOMove(grab位置1.position, 3.2f).SetEase(Ease.InCubic);
+
+        while (ChatSystem.instance.flag != "grab boy 6")
+            yield return null;
+
+
+        character.girl.SetMove(true, true);
+        yield return new WaitForSeconds(delays_上香[18]);
+        character.girl.SetMove(true, false);
+        character.girl.SetAnimTrigger("jump");
+        TogglePlayerControl(true);
+        girlHpBarCg.DOFade(1, 1);
+        grabMinion.gameObject.SetActive(false);
         yield return null;
     }
 

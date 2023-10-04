@@ -18,7 +18,11 @@ public class EnemyPlayerChecker : MonoBehaviour
     public bool FoundPlayer()
     {
         if (permanentAlert && _permanentAlertRes)
+        {
+            if (_enemy.isBoss)
+                GameFlowSystem.instance.bossHpBarCg.alpha = 0;
             return true;
+        }
 
         return PlayerInSight();
     }
@@ -48,7 +52,7 @@ public class EnemyPlayerChecker : MonoBehaviour
         var dx = pos.x - transform.position.x;
         var res = true;
         if (_enemy.patrolBehaviour.facingRight)
-            res = dx > 0 ;
+            res = dx > 0;
         else
             res = dx < 0;
 

@@ -24,7 +24,7 @@ public class EnemyBehaviour : MonoBehaviour
     public EnemyPlayerChecker playerChecker;
     [HideInInspector]
     public Animator animator;
-
+    public bool isBoss;
     private void Awake()
     {
         npcController = GetComponent<NpcController>();
@@ -80,6 +80,11 @@ public class EnemyBehaviour : MonoBehaviour
         //CapsuleCollider2D col = npcController.myCollider as CapsuleCollider2D;
         //col.size = new Vector2(col.size.x * 0.25f, col.size.y * 0.25f);
         StartCoroutine(DieProcess());
+
+        if (isBoss)
+        {
+            GameFlowSystem.instance.bossHpBarCg.alpha = 0;
+        }
     }
 
     IEnumerator DieProcess()
