@@ -57,18 +57,18 @@ public class EnemySkillBehaviour : MonoBehaviour
             case "sky fire":
                 _enemy.animator.SetTrigger("sky fire");
 
-                var fireballPos = transform.position;
+                var fbPos = transform.position;
                 var playerPos = PlayerBehaviour.instance.transform.position;
-                fireballPos.x = (fireballPos.x + playerPos.x) * 0.5f;
-                fireballPos.y = 10;
+                fbPos.x = (fbPos.x + playerPos.x) * 0.5f;
+                fbPos.y += 10;
 
-                SummonFireBall(fireballPos, 3, skl.prefab, playerPos);
-                SummonFireBall(fireballPos, 2, skl.prefab, playerPos);
-                SummonFireBall(fireballPos, 1, skl.prefab, playerPos);
-                SummonFireBall(fireballPos, 0, skl.prefab, playerPos);
-                SummonFireBall(fireballPos, -1, skl.prefab, playerPos);
-                SummonFireBall(fireballPos, -2, skl.prefab, playerPos);
-                SummonFireBall(fireballPos, -3, skl.prefab, playerPos);
+                SummonFireBall(fbPos, 3, skl.prefab, playerPos);
+                SummonFireBall(fbPos, 2, skl.prefab, playerPos);
+                SummonFireBall(fbPos, 1, skl.prefab, playerPos);
+                SummonFireBall(fbPos, 0, skl.prefab, playerPos);
+                SummonFireBall(fbPos, -1, skl.prefab, playerPos);
+                SummonFireBall(fbPos, -2, skl.prefab, playerPos);
+                SummonFireBall(fbPos, -3, skl.prefab, playerPos);
                 break;
 
             case "spike":
