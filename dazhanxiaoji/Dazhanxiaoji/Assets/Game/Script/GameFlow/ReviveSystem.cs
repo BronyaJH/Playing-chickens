@@ -10,12 +10,17 @@ namespace Assets.Game.Script.GameFlow
     {
         public static ReviveSystem instance;
         public CanvasGroup cgDie;
-        public RectTransform reviveBtn;
 
         public float dieDelay = 1.6f;
 
         private float _pendingDieTiming;
         private bool _fromFall;
+
+        public int deathPhase;//0 revive as girl 1 sleep 2 revive as warrior
+
+        public GameObject btnRevive1;
+        public GameObject btnRevive2;
+        public GameObject btnSleep;
 
         private void Awake()
         {
@@ -32,7 +37,9 @@ namespace Assets.Game.Script.GameFlow
         {
             cgDie.alpha = 0;
             cgDie.blocksRaycasts = false;
-            reviveBtn.gameObject.SetActive(false);
+            btnRevive1.SetActive(false);
+            btnRevive2.SetActive(false);
+            btnSleep.SetActive(false);
         }
 
         void Show()
@@ -40,14 +47,33 @@ namespace Assets.Game.Script.GameFlow
             Hide();
             cgDie.blocksRaycasts = true;
 
-            cgDie.DOFade(1, 1).OnComplete(
-               () => { reviveBtn.gameObject.SetActive(true); }
-                );
+            cgDie.DOFade(1, 1).OnComplete(ShowBtn);
+        }
+
+        void ShowBtn()
+        {
+            if (deathPhase == 0)
+            {
+                btnRevive1.SetActive(true);
+            }
+            else if (deathPhase == 1)
+            {
+                btnSleep.SetActive(true);
+            }
+            else if (deathPhase == 2)
+            {
+                btnRevive2.SetActive(true);
+            }
         }
 
         public void ReloadScene()
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        public void LoadSleepScene()
+        {
+            SceneManager.LoadScene(1);
         }
 
         private void Update()
@@ -65,6 +91,12 @@ namespace Assets.Game.Script.GameFlow
         {
             if (_pendingDieTiming < 0)
             {
+                if (deathPhase == 1)
+                {
+                    _pendingDieTiming = Time.time + 4f;
+                    return;
+                }
+
                 _fromFall = fromFall;
                 if (_fromFall)
                     _pendingDieTiming = Time.time + dieDelay * 0.1f;

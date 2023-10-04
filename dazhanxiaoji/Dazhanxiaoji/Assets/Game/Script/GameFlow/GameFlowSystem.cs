@@ -1,4 +1,6 @@
-﻿using DG.Tweening;
+﻿using Assets.Game.Script.GameFlow;
+using com;
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
@@ -22,6 +24,7 @@ public class GameFlowSystem : MonoBehaviour
     void Start()
     {
         bossHpBarCg.alpha = 0;
+        ReviveSystem.instance.deathPhase = 0;
 
         if (!skip_上香)
             StartCoroutine(Cinematic_上香());
@@ -44,6 +47,7 @@ public class GameFlowSystem : MonoBehaviour
     public Transform grab位置2;
     IEnumerator Cinematic_上香()
     {
+        ReviveSystem.instance.deathPhase = 0;
         girlHpBarCg.alpha = 0;
         grabMinion.transform.position = grab位置1.position;
         TogglePlayerControl(false);
@@ -162,9 +166,9 @@ public class GameFlowSystem : MonoBehaviour
 
     public float[] delays_打输的Boss战;
     public ChatPrototype[] chats_打输的Boss战;
-    public CanvasGroup cgBlack;
     public Transform boyTrunk;
     public Coroutine boySosCoroutine;
+
     public void PlayCinematic_打输的Boss战()
     {
         StartCoroutine(Cinematic_打输的Boss战());
@@ -179,6 +183,30 @@ public class GameFlowSystem : MonoBehaviour
             yield return new WaitForSeconds(0.8f);
             character.boy.SetAnimTrigger("sos");
         }
+    }
+
+    public float[] delays_山洞中;
+    public ChatPrototype[] chats_山洞中;
+    public ParticleSystem psChange;
+
+    IEnumerator PlayerBecomeWarrior()
+    {
+        TogglePlayerControl(false);
+        yield return new WaitForSeconds(1);
+
+        SoundSystem.instance.Play("change");
+        psChange.Play(true);
+        ChatSystem.instance.ShowChat(chats_山洞中[0]);
+        PlayerBehaviour.instance.ToggleWarrierState(true);
+
+        while (ChatSystem.instance.flag != "change done")
+            yield return null;
+
+        character.girl.SetAnimTrigger("attack");
+        yield return new WaitForSeconds(0.5f);
+        TogglePlayerControl(true);
+
+        ReviveSystem.instance.deathPhase = 2;
     }
 
     IEnumerator Cinematic_打输的Boss战()
@@ -198,13 +226,14 @@ public class GameFlowSystem : MonoBehaviour
         character.boy.gameObject.SetActive(true);
         boySosCoroutine = StartCoroutine(boySos());
         character.girl.SetAnimTrigger("afraid");
-
+        ReviveSystem.instance.deathPhase = 1;
         while (!character.girl.GetComponent<PlayerHealthBehaviour>().isDead)
             yield return null;
 
         Debug.Log("player die in 打输的Boss战");
 
         StopCoroutine(boySosCoroutine);
+
         ChatSystem.instance.ShowChat(chats_打输的Boss战[0]);
         while (ChatSystem.instance.flag != "before boss fight 1")
             yield return null;
