@@ -15,9 +15,10 @@ public class GameFlow1 : GameFlowSystem
 
     void Start()
     {
-        bossHpBarCg.alpha = 0;
+        ToggleBossHpBar(false);
         ReviveSystem.instance.deathPhase = 0;
         gameProcess.Init();
+
         if (skip_上香 || gameProcess.上香)
         {
             TogglePlayerControl(true);
@@ -30,7 +31,8 @@ public class GameFlow1 : GameFlowSystem
     IEnumerator Cinematic_上香()
     {
         ReviveSystem.instance.deathPhase = 0;
-        girlHpBarCg.alpha = 0;
+        TogglePlayerHpBar(false);
+        ToggleBossHpBar(false);
         grabMinion.transform.position = grab位置1.position;
         TogglePlayerControl(false);
 
@@ -143,7 +145,7 @@ public class GameFlow1 : GameFlowSystem
         character.girl.SetMove(true, false);
         character.girl.SetAnimTrigger("jump");
         TogglePlayerControl(true);
-        girlHpBarCg.DOFade(1, 1);
+        TogglePlayerHpBar(true);
         grabMinion.gameObject.SetActive(false);
         gameProcess.上香 = true;
     }

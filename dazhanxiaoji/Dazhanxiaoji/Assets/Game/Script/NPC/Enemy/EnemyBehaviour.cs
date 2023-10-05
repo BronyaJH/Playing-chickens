@@ -84,7 +84,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (isBoss)
         {
-            GameFlowSystem.instance.bossHpBarCg.alpha = 0;
+            GameFlowSystem.instance.ToggleBossHpBar(false);
         }
     }
 

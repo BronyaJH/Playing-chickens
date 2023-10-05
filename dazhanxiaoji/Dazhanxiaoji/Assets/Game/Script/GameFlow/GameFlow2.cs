@@ -7,18 +7,18 @@ public class GameFlow2 : GameFlowSystem
 {
     void Start()
     {
-        bossHpBarCg.alpha = 0;
+        ToggleBossHpBar(false);
         ReviveSystem.instance.deathPhase = 0;
 
         if (gameProcess.出山洞)
         {
-        
+
         }
-        else 
+        else
         {
             StartCoroutine(Cinematic_山洞());
         }
-        
+
     }
     IEnumerator PlayerBecomeWarrior()
     {
