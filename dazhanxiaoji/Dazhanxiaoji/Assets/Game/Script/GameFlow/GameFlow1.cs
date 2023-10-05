@@ -14,18 +14,14 @@ public class GameFlow1 : GameFlowSystem
     public GameObject grabMinion;
     public Transform grab位置1;
     public Transform grab位置2;
-
-    private void Awake()
+    void Start()
     {
         if (!_firstInit)
         {
             _firstInit = true;
             gameProcess.Init();
         }
-    }
 
-    void Start()
-    {
         ToggleBossHpBar(false);
         ReviveSystem.instance.deathPhase = 0;
 
