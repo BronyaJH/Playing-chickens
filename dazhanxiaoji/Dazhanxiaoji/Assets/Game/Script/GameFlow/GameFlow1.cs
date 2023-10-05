@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GameFlow1 : GameFlowSystem
 {
+    static bool _firstInit;
+
     public bool skip_上香;
 
     public float[] delays_上香;
@@ -13,23 +15,33 @@ public class GameFlow1 : GameFlowSystem
     public Transform grab位置1;
     public Transform grab位置2;
 
+    private void Awake()
+    {
+        if (!_firstInit)
+        {
+            _firstInit = true;
+            gameProcess.Init();
+        }
+    }
+
     void Start()
     {
         ToggleBossHpBar(false);
         ReviveSystem.instance.deathPhase = 0;
-        gameProcess.Init();
 
         if (skip_上香 || gameProcess.上香)
         {
             TogglePlayerControl(true);
             character.boy.gameObject.SetActive(false);
+            return;
         }
-        else
-            StartCoroutine(Cinematic_上香());
+
+        StartCoroutine(Cinematic_上香());
     }
 
     IEnumerator Cinematic_上香()
     {
+        yield return null;
         ReviveSystem.instance.deathPhase = 0;
         TogglePlayerHpBar(false);
         ToggleBossHpBar(false);

@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameFlowSystem : MonoBehaviour
 {
     public static GameFlowSystem instance;
+
     [HideInInspector]
     public TestCharacterAnimation character;
     [SerializeField]
