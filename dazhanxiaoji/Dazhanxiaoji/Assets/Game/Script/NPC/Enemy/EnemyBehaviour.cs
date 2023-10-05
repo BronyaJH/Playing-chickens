@@ -40,6 +40,8 @@ public class EnemyBehaviour : MonoBehaviour
         _hp = hpMax;
         if (hpbar != null)
             hpbar.Set(1, true);
+
+        hpbar.Hide();
     }
 
     private void Update()

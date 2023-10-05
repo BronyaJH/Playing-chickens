@@ -13,6 +13,7 @@ public class HpBarFixedWidthBehaviour : MonoBehaviour
     public float powerScaleValue = 1;
     public float length;
     public float delay;
+
     public void Hide()
     {
         cg.alpha = 0;
