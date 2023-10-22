@@ -30,13 +30,13 @@ public class GameFlowSystem : MonoBehaviour
 
     public void ToggleBossHpBar(bool b)
     {
-        Debug.Log("ToggleBossHpBar " + b);
+        //Debug.Log("ToggleBossHpBar " + b);
         bossHpBarCg.alpha = b ? 1 : 0;
     }
 
     public void TogglePlayerHpBar(bool b)
     {
-        Debug.Log("TogglePlayerHpBar " + b);
+        //Debug.Log("TogglePlayerHpBar " + b);
         girlHpBarCg.alpha = b ? 1 : 0;
     }
 }

@@ -45,10 +45,17 @@ public class EnemyPlayerChecker : MonoBehaviour
             return false;
 
         var res = true;
-        if (_enemy.patrolBehaviour.facingRight)
-            res = dx > 0 && dx <= playerCheckDistanceX;
+        if (_enemy.patrolBehaviour == null)
+        {
+            res = (Mathf.Abs(dx) <= playerCheckDistanceX);
+        }
         else
-            res = dx < 0 && dx >= -playerCheckDistanceX;
+        {
+            if (_enemy.patrolBehaviour.facingRight)
+                res = dx > 0 && dx <= playerCheckDistanceX;
+            else
+                res = dx < 0 && dx >= -playerCheckDistanceX;
+        }
 
         if (res)
             _permanentAlertRes = true;

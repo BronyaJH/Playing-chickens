@@ -8,8 +8,8 @@ public class Cannon : MonoBehaviour
     public float interval;
 
     public Transform muzzle;
+    public bool activated;
 
-    public bool activated;//minion died or not
     public float distanceXFromPlayer = 30;
 
     private float _nextOpenFireTime;

@@ -37,6 +37,12 @@ public class PlayerGroundDetecter : MonoBehaviour
         for (var i = _cols.Count - 1; i >= 0; i--)
         {
             var col = _cols[i];
+            if (col == null)
+            {
+                _cols.Remove(col);
+                continue;
+            }
+
             if (!cols.Contains(col))
             {
                 OnExit(col);
