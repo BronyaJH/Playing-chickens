@@ -70,6 +70,8 @@ public class PlayerJump : MonoBehaviour
     {
         //_speedY = 0;
         var v = _movePosition.rb.velocity;
+        if (v.y > 0)
+            return;
         v.y = 0;
         _movePosition.rb.velocity = v;
         _movePosition.StopXMovement();

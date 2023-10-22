@@ -10,51 +10,70 @@ public class PlayerGroundDetecter : MonoBehaviour
     List<GameObject> _currentGrounds = new List<GameObject>();
     public PlayerHealthBehaviour health;
 
+    public float radius;
+
+    List<Collider2D> _cols;
+
     private void Awake()
     {
         health = GetComponentInParent<PlayerHealthBehaviour>();
+        _cols = new List<Collider2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void FixedUpdate()
     {
-        if (collision.tag == "Kill")
+        var cols = Physics2D.OverlapCircleAll(transform.position, radius);
+        foreach (var col in cols)
         {
-            health.Die(true);
-        }
-    }
+            if (toIgnores.Contains(col.gameObject))
+                continue;
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (toIgnores.Contains(collision.gameObject))
-            return;
-        //Debug.Log("OnCollisionEnter2D " + collision.gameObject);
-
-        var colEnemy = collision.gameObject.GetComponent<EnemyBehaviour>();
-        if (colEnemy != null)
-        {
-            if (colEnemy.headKickSlay != null)
+            if (!_cols.Contains(col))
             {
-                if (colEnemy.headKickSlay.CheckHit(collision))
-                {
-                    colEnemy.TakeDamage(colEnemy.headKickSlay.damage);
-                }
+                OnEnter(col);
+                _cols.Add(col);
             }
         }
+        for (var i = _cols.Count - 1; i >= 0; i--)
+        {
+            var col = _cols[i];
+            if (!cols.Contains(col))
+            {
+                OnExit(col);
+                _cols.Remove(col);
+            }
+        }
+    }
+    private void OnEnter(Collider2D col)
+    {
+        if (col.tag == "Kill")
+        {
+            health.Die(true);
+            return;
+        }
 
+        var colEnemy = col.gameObject.GetComponent<EnemyBehaviour>();
+        if (colEnemy != null
+            && colEnemy.headKickSlay != null
+            && colEnemy.headKickSlay.CheckHit(transform.position))
+        {
+            colEnemy.TakeDamage(colEnemy.headKickSlay.damage);
+        }
+
+        if (col.isTrigger)
+            return;
         //Debug.Log(collision.contacts.Length);
-        if (!_currentGrounds.Contains(collision.gameObject))
-            _currentGrounds.Add(collision.gameObject);
+        if (!_currentGrounds.Contains(col.gameObject))
+            _currentGrounds.Add(col.gameObject);
         isGrounded = _currentGrounds.Count > 0;
         jump.OnGrounded();
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnExit(Collider2D col)
     {
-        if (toIgnores.Contains(collision.gameObject))
-            return;
         //Debug.Log("OnCollisionExit2D " + collision.gameObject);
-        if (_currentGrounds.Contains(collision.gameObject))
-            _currentGrounds.Remove(collision.gameObject);
+        if (_currentGrounds.Contains(col.gameObject))
+            _currentGrounds.Remove(col.gameObject);
         isGrounded = _currentGrounds.Count > 0;
     }
 }
