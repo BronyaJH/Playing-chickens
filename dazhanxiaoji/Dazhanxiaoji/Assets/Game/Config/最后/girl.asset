@@ -17,4 +17,4 @@ MonoBehaviour:
   soundName: 1
   chatSpecialAction: 0
   next: {fileID: 0}
-  flag: 
+  flag: end

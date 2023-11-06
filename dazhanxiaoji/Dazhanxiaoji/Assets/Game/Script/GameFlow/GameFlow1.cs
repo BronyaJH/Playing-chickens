@@ -231,10 +231,34 @@ public class GameFlow1 : GameFlowSystem
     }
 
     public GameObject endGameTrigger;
+
     public void OnBossDead()
     {
         StopCoroutine(boySosCoroutine);
-        character.boy.SetAnimBool("pride", true);
+        character.boy.SetAnimBool("pride", false);
         endGameTrigger.SetActive(true);
+        StartCoroutine(EndGame());
+    }
+
+    IEnumerator EndGame()
+    {
+        while (ChatSystem.instance.flag != "end")
+            yield return null;
+
+        //character.girl.FlipLeft();
+        TogglePlayerHpBar(false);
+        TogglePlayerControl(false);
+
+        character.boy.GetComponent<Rigidbody2D>().isKinematic = false;
+        yield return new WaitForSeconds(1.5f);
+        character.boy.FlipLeft();
+        character.boy.SetMove(false, true);
+        yield return new WaitForSeconds(1f);
+        character.girl.FlipLeft();
+
+        character.girl.SetMove(false, true);
+
+        yield return new WaitForSeconds(2f);
+        character.boy.SetAnimBool("pride", true);
     }
 }

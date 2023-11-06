@@ -16,5 +16,5 @@ MonoBehaviour:
   content: Now this warrior with firm conviction has awakened me
   soundName: 2
   chatSpecialAction: 0
-  next: {fileID: 0}
+  next: {fileID: 11400000, guid: 810a496ddfb745e4fa7edad466e31088, type: 2}
   flag: 

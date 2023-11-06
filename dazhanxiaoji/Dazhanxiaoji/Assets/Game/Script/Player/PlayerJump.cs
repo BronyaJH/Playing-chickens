@@ -32,11 +32,12 @@ public class PlayerJump : MonoBehaviour
             return;
         if (ChatSystem.instance.IsChating())
             return;
+
         if (_attack.isAttacking)
             return;
         if (_health.isDead)
             return;
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.W))
             TryJump();
     }
 
