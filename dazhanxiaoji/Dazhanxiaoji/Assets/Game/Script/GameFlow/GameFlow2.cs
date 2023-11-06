@@ -7,20 +7,13 @@ public class GameFlow2 : GameFlowSystem
 {
     void Start()
     {
-        ToggleBossHpBar(false);
+        //ToggleBossHpBar(false);
         ReviveSystem.instance.deathPhase = 0;
-
-        if (gameProcess.出山洞)
-        {
-
-        }
-        else
-        {
-            StartCoroutine(Cinematic_山洞());
-        }
-
+        TogglePlayerControl(true);
+        StartCoroutine(Cinematic_山洞());
     }
-    IEnumerator PlayerBecomeWarrior()
+
+    IEnumerator PlayerBecomeWarrior()   
     {
         TogglePlayerControl(false);
         yield return new WaitForSeconds(1);
