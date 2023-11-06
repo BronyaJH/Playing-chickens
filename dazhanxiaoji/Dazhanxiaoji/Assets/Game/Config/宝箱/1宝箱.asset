@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "1\u5B9D\u7BB1"
   m_EditorClassIdentifier: 
   characterId: "\u5B9D\u7BB1"
-  content: Those who have fallen in love, please use your loyalty to unlock the seal
-    of the sky lock
+  content: Those who have fallen in love
   soundName: 1
   chatSpecialAction: 0
-  next: {fileID: 0}
+  next: {fileID: 11400000, guid: 616879c1130ec374cab6ed8029f172c7, type: 2}
+  flag: 

@@ -71,6 +71,11 @@ public class ChatSystem : MonoBehaviour
         _chat = null;
     }
 
+    public bool IsChating()
+    {
+        return _chat != null;
+    }
+
     public void OnChatEnd()
     {
         if (_chat == null)

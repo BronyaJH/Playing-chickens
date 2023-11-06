@@ -30,6 +30,8 @@ public class PlayerJump : MonoBehaviour
     {
         if (com.GameTime.timeScale == 0)
             return;
+        if (ChatSystem.instance.IsChating())
+            return;
         if (_attack.isAttacking)
             return;
         if (_health.isDead)

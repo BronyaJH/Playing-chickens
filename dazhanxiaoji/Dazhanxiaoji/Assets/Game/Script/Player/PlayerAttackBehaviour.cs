@@ -67,6 +67,12 @@ public class PlayerAttackBehaviour : MonoBehaviour
                 ps.Play();
                 ene.TakeDamage(damage);
             }
+
+            var des = t.GetComponent<Destroyable>();
+            if (des != null)
+            {
+                Destroy(des.gameObject);
+            }
         }
     }
 }
