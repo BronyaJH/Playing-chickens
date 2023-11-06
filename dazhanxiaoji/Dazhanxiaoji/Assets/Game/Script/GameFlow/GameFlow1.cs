@@ -180,8 +180,6 @@ public class GameFlow1 : GameFlowSystem
         }
     }
 
-    public float[] delays_打输的Boss战;
-    public ChatPrototype[] chats_打输的Boss战;
     public Transform boyTrunk;
     public Coroutine boySosCoroutine;
 
@@ -201,6 +199,10 @@ public class GameFlow1 : GameFlowSystem
         }
     }
 
+    public Transform 被踢路线_0;
+    public Transform 被踢路线_1;
+    public Transform 被踢路线_2;
+    public
     IEnumerator Cinematic_打输的Boss战()
     {
         //逐渐黑屏
@@ -209,10 +211,18 @@ public class GameFlow1 : GameFlowSystem
         TogglePlayerControl(false);
         character.girl.SetAnimTrigger("afraid");
         character.boss.SetAnimTrigger("melee");
-        yield return new WaitForSeconds(delays_打输的Boss战[0]);
+        yield return new WaitForSeconds(1);
         gameProcess.推下山 = true;
+        ReviveSystem.instance.deathPhase = 1;
         character.girl.GetComponent<Rigidbody2D>().isKinematic = true;
-        character.girl.transform.DOLocalRotate(new Vector3(0, 0, 1080), 5f, RotateMode.LocalAxisAdd);
+        character.girl.transform.DOLocalRotate(new Vector3(0, 0, 2520), 6f, RotateMode.LocalAxisAdd);
+        character.girl.transform.DOMove(被踢路线_0.position, 2f).SetEase(Ease.Linear);
+        yield return new WaitForSeconds(2f);
+        character.girl.transform.DOMove(被踢路线_1.position, 2f).SetEase(Ease.Linear);
+        yield return new WaitForSeconds(2f);
+        character.girl.transform.DOMove(被踢路线_2.position, 2f).SetEase(Ease.Linear);
+        yield return new WaitForSeconds(0.8f);
+        ReviveSystem.instance.QueueDie(false);
     }
 
 }
