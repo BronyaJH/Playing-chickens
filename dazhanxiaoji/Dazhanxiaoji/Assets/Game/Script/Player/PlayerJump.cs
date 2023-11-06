@@ -28,6 +28,8 @@ public class PlayerJump : MonoBehaviour
 
     void ReadInput()
     {
+        if (com.GameTime.timeScale == 0)
+            return;
         if (_attack.isAttacking)
             return;
         if (_health.isDead)
