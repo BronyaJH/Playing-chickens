@@ -50,18 +50,21 @@ public class ChatPanelBehaviour : MonoBehaviour
         right.enabled = false;
         left.enabled = false;
         var chatCharacter = ConfigSystem.instance.chatConfig.GetChatCharacterPrototype(chat.characterId);
-        var sp = chatCharacter.sp;
-        if (sp != null)
+        if (chatCharacter != null)
         {
-            if (chatCharacter.isRightSide)
+            var sp = chatCharacter.sp;
+            if (sp != null)
             {
-                right.enabled = true;
-                right.sprite = sp;
-            }
-            else
-            {
-                left.enabled = true;
-                left.sprite = sp;
+                if (chatCharacter.isRightSide)
+                {
+                    right.enabled = true;
+                    right.sprite = sp;
+                }
+                else
+                {
+                    left.enabled = true;
+                    left.sprite = sp;
+                }
             }
         }
     }

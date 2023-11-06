@@ -45,6 +45,14 @@ public class ChatSystem : MonoBehaviour
         ChatPanelBehaviour.instance.Show(_chat);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ChatPanelBehaviour.instance.UserTapped();
+        }
+    }
+
     public void EndChat()
     {
         PauseSystem.instance.Resume();
@@ -56,7 +64,10 @@ public class ChatSystem : MonoBehaviour
             case ChatPrototype.ChatSpecialAction.None:
                 break;
         }
-
+        if (flag == "kick girl")
+        {
+            (GameFlow1.instance as GameFlow1).PlayCinematic_打输的Boss战();
+        }
         _chat = null;
     }
 

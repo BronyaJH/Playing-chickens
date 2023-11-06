@@ -2,6 +2,7 @@
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class GameFlow1 : GameFlowSystem
 {
@@ -14,6 +15,8 @@ public class GameFlow1 : GameFlowSystem
     public GameObject grabMinion;
     public Transform grab位置1;
     public Transform grab位置2;
+    public Transform 男人被抓位置;
+
     void Start()
     {
         if (!_firstInit)
@@ -28,7 +31,11 @@ public class GameFlow1 : GameFlowSystem
         if (skip_上香 || gameProcess.上香)
         {
             TogglePlayerControl(true);
-            character.boy.gameObject.SetActive(false);
+            character.boy.GetComponent<Rigidbody2D>().isKinematic = true;
+            character.boy.transform.SetParent(男人被抓位置);
+            character.boy.gameObject.SetActive(true);
+            character.boy.transform.localPosition = Vector3.zero;
+            StartCoroutine(男人一直求救());
             return;
         }
 
@@ -155,7 +162,22 @@ public class GameFlow1 : GameFlowSystem
         TogglePlayerControl(true);
         TogglePlayerHpBar(true);
         grabMinion.gameObject.SetActive(false);
+
+        character.boy.transform.SetParent(男人被抓位置);
+        character.boy.gameObject.SetActive(true);
+        character.boy.transform.localPosition = Vector3.zero;
+        StartCoroutine(男人一直求救());
+
         gameProcess.上香 = true;
+    }
+
+    IEnumerator 男人一直求救()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(0.6f, 1.5f));
+            character.boy.SetAnimTrigger("sos");
+        }
     }
 
     public float[] delays_打输的Boss战;
@@ -181,32 +203,16 @@ public class GameFlow1 : GameFlowSystem
 
     IEnumerator Cinematic_打输的Boss战()
     {
-        //对战
-        //玩家被打败
-        //boss喊话
         //逐渐黑屏
         //出现女主的话 分三段
         //逐渐亮屏幕 已经在洞穴里了
-        TogglePlayerControl(true);
-
-        character.boy.GetComponent<Rigidbody2D>().isKinematic = true;
-        character.boy.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-        character.boy.transform.SetParent(boyTrunk);
-        character.boy.transform.localPosition = Vector3.zero;
-        character.boy.gameObject.SetActive(true);
-        boySosCoroutine = StartCoroutine(boySos());
+        TogglePlayerControl(false);
         character.girl.SetAnimTrigger("afraid");
-        ReviveSystem.instance.deathPhase = 1;
-        while (!character.girl.GetComponent<PlayerHealthBehaviour>().isDead)
-            yield return null;
-
-        Debug.Log("player died in 打输的Boss战");
-        StopCoroutine(boySosCoroutine);
+        character.boss.SetAnimTrigger("melee");
         yield return new WaitForSeconds(delays_打输的Boss战[0]);
-        ChatSystem.instance.ShowChat(chats_打输的Boss战[0]);
-        while (ChatSystem.instance.flag != "in cave")
-            yield return null;
         gameProcess.推下山 = true;
+        character.girl.GetComponent<Rigidbody2D>().isKinematic = true;
+        character.girl.transform.DOLocalRotate(new Vector3(0, 0, 1080), 5f, RotateMode.LocalAxisAdd);
     }
 
 }
