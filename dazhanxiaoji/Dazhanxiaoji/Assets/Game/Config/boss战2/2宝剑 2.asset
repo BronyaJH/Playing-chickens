@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: "2\u5B9D\u5251 2"
   m_EditorClassIdentifier: 
   characterId: "\u5B9D\u5251"
-  content: 'Now this warrior with firm conviction has awakened me, and you will be
-    sealed again. '
+  content: Now this warrior with firm conviction has awakened me
   soundName: 2
   chatSpecialAction: 0
   next: {fileID: 0}

@@ -29,7 +29,7 @@ public class GameFlow1 : GameFlowSystem
         ToggleBossHpBar(false);
         ReviveSystem.instance.deathPhase = 0;
 
-        if (startAsWarrior||skip_上香 || gameProcess.上香)
+        if (startAsWarrior || skip_上香 || gameProcess.上香)
         {
             if (startAsWarrior)
                 character.girl.GetComponent<PlayerBehaviour>().ToggleWarrierState(true);
@@ -39,7 +39,7 @@ public class GameFlow1 : GameFlowSystem
             character.boy.transform.SetParent(男人被抓位置);
             character.boy.gameObject.SetActive(true);
             character.boy.transform.localPosition = Vector3.zero;
-            StartCoroutine(男人一直求救());
+            boySosCoroutine = StartCoroutine(男人一直求救());
             ReviveSystem.instance.deathPhase = 2;
             return;
         }
@@ -171,7 +171,7 @@ public class GameFlow1 : GameFlowSystem
         character.boy.transform.SetParent(男人被抓位置);
         character.boy.gameObject.SetActive(true);
         character.boy.transform.localPosition = Vector3.zero;
-        StartCoroutine(男人一直求救());
+        boySosCoroutine = StartCoroutine(男人一直求救());
 
         gameProcess.上香 = true;
     }
@@ -230,4 +230,11 @@ public class GameFlow1 : GameFlowSystem
         ReviveSystem.instance.QueueDie(false);
     }
 
+    public GameObject endGameTrigger;
+    public void OnBossDead()
+    {
+        StopCoroutine(boySosCoroutine);
+        character.boy.SetAnimBool("pride", true);
+        endGameTrigger.SetActive(true);
+    }
 }
