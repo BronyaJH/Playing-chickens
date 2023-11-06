@@ -260,5 +260,8 @@ public class GameFlow1 : GameFlowSystem
 
         yield return new WaitForSeconds(2f);
         character.boy.SetAnimBool("pride", true);
+        character.boy.SetMove(false, false);
+        yield return new WaitForSeconds(0.2f);
+        character.boy.SetMove(false, true);
     }
 }
