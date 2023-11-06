@@ -9,6 +9,7 @@ public class GameFlow1 : GameFlowSystem
     static bool _firstInit;
 
     public bool skip_上香;
+    public bool startAsWarrior;
 
     public float[] delays_上香;
     public ChatPrototype[] chats_上香;
@@ -28,14 +29,18 @@ public class GameFlow1 : GameFlowSystem
         ToggleBossHpBar(false);
         ReviveSystem.instance.deathPhase = 0;
 
-        if (skip_上香 || gameProcess.上香)
+        if (startAsWarrior||skip_上香 || gameProcess.上香)
         {
+            if (startAsWarrior)
+                character.girl.GetComponent<PlayerBehaviour>().ToggleWarrierState(true);
             TogglePlayerControl(true);
+            character.girl.FlipRight();
             character.boy.GetComponent<Rigidbody2D>().isKinematic = true;
             character.boy.transform.SetParent(男人被抓位置);
             character.boy.gameObject.SetActive(true);
             character.boy.transform.localPosition = Vector3.zero;
             StartCoroutine(男人一直求救());
+            ReviveSystem.instance.deathPhase = 2;
             return;
         }
 

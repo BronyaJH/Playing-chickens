@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: "2\u5B9D\u5251"
   m_EditorClassIdentifier: 
   characterId: "\u5B9D\u5251"
-  content: 'You are just birds in a cage, how dare you act presumptuously in front
-    of divinity. Back then, I was torn apart by you only after exhausting my divine
-    power, and the remaining power of the fragments has been gathering at the bottom
-    of the cliff. Now this warrior with firm conviction has awakened me, and you
-    will be sealed again. '
+  content: You are just birds in a cage, how dare you act presumptuously in front
+    of divinity.
   soundName: 2
   chatSpecialAction: 0
-  next: {fileID: 11400000, guid: 7c8f648088125264785d410d5144d500, type: 2}
+  next: {fileID: 11400000, guid: 3cb867d3d5187b5458b79f86372db283, type: 2}
+  flag: 

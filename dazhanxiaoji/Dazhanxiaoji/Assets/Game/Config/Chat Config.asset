@@ -34,3 +34,6 @@ MonoBehaviour:
   - id: "\u5B9D\u7BB1"
     sp: {fileID: 21300000, guid: 59ab99b3c4b2d224f857a9bbacf370f1, type: 3}
     isRightSide: 0
+  - id: "\u5B9D\u5251"
+    sp: {fileID: 21300000, guid: 20c1c784788f2e04e892bedcb4fe45ac, type: 3}
+    isRightSide: 1

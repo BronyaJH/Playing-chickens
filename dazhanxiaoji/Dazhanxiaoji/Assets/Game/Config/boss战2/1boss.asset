@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: 1boss
   m_EditorClassIdentifier: 
   characterId: boss
-  content: Impossible...why can you possess such a godly power? It's the Sword of
-    Heaven...Why is it still there after I destroyed it? Could it be...that the sword
-    was not destroyed at all, and that it is still hidden under the cliff?
+  content: Impossible...why can you possess such a godly power?
   soundName: 1
   chatSpecialAction: 0
-  next: {fileID: 0}
+  next: {fileID: 11400000, guid: e02151276e003a740bbf06588cca7cc3, type: 2}
+  flag: 
